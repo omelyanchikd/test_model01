@@ -1,5 +1,5 @@
 #pragma once
-ref class world
+class world
 {
 public:
 	world(void);

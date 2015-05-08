@@ -1,5 +1,5 @@
 #pragma once
-ref class raw_market
+class raw_market
 {
 public:
 	raw_market(void);

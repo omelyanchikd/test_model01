@@ -1,5 +1,5 @@
 #pragma once
-ref class household
+class household
 {
 public:
 	household(void);
