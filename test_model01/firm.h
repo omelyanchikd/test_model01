@@ -1,20 +1,22 @@
 #pragma once
 
 #include "household.h"
-#include "labor_market.h"
-#include "good_market.h"
-#include "capital_market.h"
-#include "raw_market.h"
 
 #include <vector>
 
+#include <string>
+#include <sstream>
+
 using namespace std;
+
+class household;
 
 class firm
 {
 public:
 	firm(void);
 	
+	string set_vacancy();
 	void get_workers();
 	void fire();
 	
@@ -33,6 +35,9 @@ public:
 
 	void learn();
 
+	double get_salary();
+	double get_needed_workers();
+
 
 private:
 
@@ -43,6 +48,8 @@ private:
 	double raw_budget;
 	double capital_budget;
 	double salary_budget;
+
+	double needed_workers;
 
 	double labor_capacity;
 	double raw_capacity;
@@ -62,10 +69,7 @@ private:
 	double profit;
 
 	vector<household*> workers;
-	labor_market *labormarket;
-	raw_market *rawmarket;
-	capital_market *capitalmarket;
-	good_market *good_market;
 
+	string parse(double a, double b);
 };
 
