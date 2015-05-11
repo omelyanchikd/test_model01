@@ -21,8 +21,6 @@ private:
 	vector<household*> households;
 	vector<firm*> firms;
 
-	vector<string> vacancies;
-
 	vector<double> probabilities;
 
 	double summarize(vector<double> values);

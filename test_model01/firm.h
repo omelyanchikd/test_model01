@@ -19,6 +19,8 @@ public:
 	string set_vacancy();
 	void get_workers();
 	void fire();
+	void hire(household* worker);
+	void quit(household* worker);
 	
 	void buy_raw();
 	void buy_capital();

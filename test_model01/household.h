@@ -15,7 +15,7 @@ public:
 	household(void);
 
 	void fire();
-	void find_work(vector<string> vacancies);
+	void find_work(vector<double> probabilities, vector<firm*> firms);
 
 private:
 	
@@ -25,5 +25,7 @@ private:
 	double salary;
 
 	bool employed;
+
+	int get_random(vector<double> probabilities);
 };
 

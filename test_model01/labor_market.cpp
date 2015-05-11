@@ -11,20 +11,21 @@ void labor_market::set_vacancies()
 	vector<double> salaries;
 	for (int i = 0; i < firms.size(); i++)
 	{
-		vacancies.push_back(firms[i]->set_vacancy());
 		if (firms[i]->get_needed_workers() > 0)
 			salaries.push_back(firms[i]->get_salary());
 		else
 			salaries.push_back(0);
 	}
 	probabilities = allocate(salaries);
-
 }
 
 void labor_market::set_workers()
 {
 	for (int i = 0; i < households.size(); i++)
-		households[i]->find_work(vacancies);
+	{
+		households[i]->find_work(probabilities, firms);
+		update_market();
+	}d
 }
 
 double labor_market::summarize(vector<double> values)

@@ -37,6 +37,27 @@ void firm::fire()
 	}//*/
 }
 
+void firm::hire(household* worker)
+{
+	workers.push_back(worker);
+	needed_workers--;
+}
+
+void firm::quit(household* worker)
+{
+	int index = -1;
+	for (int i = 0; i < workers.size(); i++)
+	{
+		if (workers[i] == worker)
+		{
+			index = i;
+			break;
+		}
+	}
+	if (index > -1)
+		workers.erase(workers.begin() + index);
+}
+
 string firm::parse(double a, double b)
 {
 	ostringstream buffer;
