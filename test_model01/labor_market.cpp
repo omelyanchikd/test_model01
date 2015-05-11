@@ -23,9 +23,9 @@ void labor_market::set_workers()
 {
 	for (int i = 0; i < households.size(); i++)
 	{
+		set_vacancies();
 		households[i]->find_work(probabilities, firms);
-		update_market();
-	}d
+	};
 }
 
 double labor_market::summarize(vector<double> values)
