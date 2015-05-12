@@ -76,3 +76,13 @@ double firm::get_needed_workers()
 {
 	return needed_workers;
 }
+
+double firm::get_price()
+{
+	return price;
+}
+
+double firm::get_quantity()
+{
+	return quantity;
+}

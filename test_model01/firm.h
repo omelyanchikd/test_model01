@@ -39,6 +39,8 @@ public:
 
 	double get_salary();
 	double get_needed_workers();
+	double get_price();
+	double get_quantity();
 
 
 private:
@@ -47,6 +49,7 @@ private:
 	double salary;
 	double price;
 	double plan;
+	
 	double raw_budget;
 	double capital_budget;
 	double salary_budget;
@@ -66,6 +69,7 @@ private:
 	double raw;
 	double good;
 
+	double quantity;
 
 	double sales;
 	double profit;
