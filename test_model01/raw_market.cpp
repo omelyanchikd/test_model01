@@ -22,7 +22,7 @@ void raw_market::buy()
 {
 	for (int i = 0; i < buyers.size(); i++)
 	{
-		buyers[i]->buy_raw(probabilities, sellers);
+//		while (buyers[i]->buy_raw(probabilities, sellers) ||;
 	}
 }
 

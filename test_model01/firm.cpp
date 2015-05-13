@@ -58,8 +58,27 @@ void firm::quit(household* worker)
 		workers.erase(workers.begin() + index);
 }
 
-void firm::buy_raw(vector<double> probabilities, vector<firm*> sellers)
+void firm::sell_raw(double amount)
 {
+	quantity -= amount;
+	sales += amount * price;
+}
+
+bool firm::buy_raw(vector<double> probabilities, vector<firm*> sellers)
+{
+	int index = get_random(probabilities);
+	double raw_quantity = sellers[index]->get_quantity();
+	double raw_price = sellers[index]->get_price();
+	double raw_need = raw_capacity - raw;
+	if (raw_quantity >= raw_need && raw_budget >= raw_need * raw_price)
+	{
+		raw += raw_need;
+		raw_budget -= raw_need * raw_price;
+		sellers[index]->sell_raw(raw_need);
+	}
+	if (raw < raw_capacity && raw_budget > 0)
+		return false;
+	return true;
 }
 
 string firm::parse(double a, double b)
