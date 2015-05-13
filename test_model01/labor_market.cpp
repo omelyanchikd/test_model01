@@ -28,21 +28,3 @@ void labor_market::set_workers()
 	};
 }
 
-double labor_market::summarize(vector<double> values)
-{
-	double sum = 0;
-	for (int i = 0; i < values.size(); i++)
-		sum += values[i];
-	return sum;
-}
-
-vector<double> labor_market::allocate(vector<double> values)
-{
-	vector<double> allocation;
-	double sum = summarize(values);
-	for (int i = 0; i < values.size(); i++)
-	{
-		allocation.push_back(values[i]/sum);
-	}
-	return allocation;
-}

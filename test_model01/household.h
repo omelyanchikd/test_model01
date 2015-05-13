@@ -2,6 +2,8 @@
 
 #include "firm.h"
 
+#include "generator.h"
+
 #include <vector>
 #include <string>
 
@@ -16,6 +18,7 @@ public:
 
 	void fire();
 	void find_work(vector<double> probabilities, vector<firm*> firms);
+	void buy(vector<double> probabilities, vector<firm*> firms);
 
 private:
 	
@@ -26,6 +29,8 @@ private:
 
 	bool employed;
 
-	int get_random(vector<double> probabilities);
+	double consumption_budget;
+	double consumption_need;
+
 };
 

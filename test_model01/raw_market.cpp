@@ -15,10 +15,14 @@ void raw_market::sell()
 		prices.push_back(sellers[i]->get_price());
 		quantity.push_back(sellers[i]->get_quantity());
 	}
-	probabilities = allocate_reverse(prices);
+	probabilities = allocate(invert(prices));
 }
 
 void raw_market::buy()
 {
+	for (int i = 0; i < buyers.size(); i++)
+	{
+		buyers[i]->buy_raw(probabilities, sellers);
+	}
 }
 

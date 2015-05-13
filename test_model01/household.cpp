@@ -30,20 +30,7 @@ void household::find_work(vector<double> probabilities, vector<firm*> firms)
 	}
 }
 
-int household::get_random(vector<double> probabilities)
+void household::buy(vector<double> probabilities, vector<firm*> firms)
 {
-	vector<double> allocation;
-	allocation.push_back(0);
-	for (int i = 0; i < probabilities.size(); i++)
-	{
-		allocation.push_back(allocation[i] + probabilities[i]);
-	}
-	double rand_number = rand()/(double)RAND_MAX;
-	if (rand_number == 1)
-		return (allocation.size() - 1);
-	for (int i = 1; i < allocation.size(); i++)
-	{
-		if (allocation[i-1] <= rand_number && rand_number < allocation[i])
-			return i;
-	}	
+	//if (budget 
 }

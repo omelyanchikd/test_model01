@@ -1,4 +1,4 @@
-﻿Build started 12.05.2015 23:07:55.
+﻿Build started 13.05.2015 22:00:12.
      1>Project "D:\multiagent projects\test_model01\test_model01\test_model01.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Touching "Debug\test_model01.unsuccessfulbuild".
@@ -6,9 +6,17 @@
        Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
        ClCompile:
          All outputs are up-to-date.
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr:pure /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\test_model01.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt raw_market.cpp /clr:nostdlib 
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr:pure /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\test_model01.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt firm.cpp household.cpp labor_market.cpp raw_market.cpp /clr:nostdlib 
+         firm.cpp
+     1>firm.cpp(49): warning C4018: '<' : signed/unsigned mismatch
+         household.cpp
+         labor_market.cpp
+     1>labor_market.cpp(12): warning C4018: '<' : signed/unsigned mismatch
+     1>labor_market.cpp(24): warning C4018: '<' : signed/unsigned mismatch
          raw_market.cpp
      1>raw_market.cpp(13): warning C4018: '<' : signed/unsigned mismatch
+     1>raw_market.cpp(23): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
          All outputs are up-to-date.
        CoreResGen:
          No resources are out of date with respect to their source files. Skipping resource generation.
@@ -20,6 +28,7 @@
          Debug\capital_market.obj
          Debug\firm.obj
          Debug\firms.obj
+         Debug\generator.obj
          Debug\good_market.obj
          Debug\household.obj
          Debug\households.obj
@@ -39,4 +48,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.63
+Time Elapsed 00:00:07.34

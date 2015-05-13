@@ -3,6 +3,8 @@
 #include "firm.h"
 #include "household.h"
 
+#include "generator.h"
+
 #include <vector>
 
 using namespace std;

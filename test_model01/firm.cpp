@@ -58,6 +58,10 @@ void firm::quit(household* worker)
 		workers.erase(workers.begin() + index);
 }
 
+void firm::buy_raw(vector<double> probabilities, vector<firm*> sellers)
+{
+}
+
 string firm::parse(double a, double b)
 {
 	ostringstream buffer;

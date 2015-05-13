@@ -3,6 +3,8 @@
 #include "firm.h"
 #include "household.h"
 
+#include "generator.h"
+
 #include <vector>
 #include <string>
 
@@ -22,9 +24,6 @@ private:
 	vector<firm*> firms;
 
 	vector<double> probabilities;
-
-	double summarize(vector<double> values);
-	vector<double> allocate(vector<double> values);	
 
 };
 

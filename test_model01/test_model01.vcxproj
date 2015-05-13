@@ -90,6 +90,7 @@
     <ClCompile Include="capital_market.cpp" />
     <ClCompile Include="firm.cpp" />
     <ClCompile Include="firms.cpp" />
+    <ClCompile Include="generator.cpp" />
     <ClCompile Include="good_market.cpp" />
     <ClCompile Include="household.cpp" />
     <ClCompile Include="households.cpp" />
@@ -109,6 +110,7 @@
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="generator.h" />
     <ClInclude Include="good_market.h" />
     <ClInclude Include="household.h" />
     <ClInclude Include="households.h" />
