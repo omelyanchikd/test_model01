@@ -64,8 +64,10 @@ void firm::sell_raw(double amount)
 	sales += amount * price;
 }
 
-bool firm::buy_raw(vector<double> probabilities, vector<firm*> sellers)
+int firm::buy_raw(vector<double> probabilities, vector<firm*> sellers)
 {
+	if (raw == raw_capacity || raw_budget == 0)
+		return -1;
 	int index = get_random(probabilities);
 	double raw_quantity = sellers[index]->get_quantity();
 	double raw_price = sellers[index]->get_price();
@@ -76,9 +78,8 @@ bool firm::buy_raw(vector<double> probabilities, vector<firm*> sellers)
 		raw_budget -= raw_need * raw_price;
 		sellers[index]->sell_raw(raw_need);
 	}
-	if (raw < raw_capacity && raw_budget > 0)
-		return false;
-	return true;
+	//add other cases
+	return index;
 }
 
 string firm::parse(double a, double b)

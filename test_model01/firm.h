@@ -22,7 +22,7 @@ public:
 	void hire(household* worker);
 	void quit(household* worker);
 	
-	bool buy_raw(vector<double> probabilities, vector<firm*> firms);
+	int buy_raw(vector<double> probabilities, vector<firm*> firms);
 	void buy_capital();
 
 	void produce_raw();

@@ -17,6 +17,9 @@ public:
 	void buy();
 	void sell();
 
+	bool empty();
+	void update(int bought);
+
 private:
 
 	vector<firm*> buyers;
