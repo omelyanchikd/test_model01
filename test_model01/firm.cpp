@@ -78,7 +78,27 @@ firm* firm::buy_raw(map<firm*, double> probabilities)
 		raw_budget -= raw_need * raw_price;
 		seller->sell_raw(raw_need);
 	}
-	//add other cases
+	else
+		if (raw_quantity >= raw_need && raw_budget < raw_need * raw_price)
+		{
+			raw += raw_budget/raw_price;
+			seller->sell_raw(raw_budget/raw_price);
+			raw_budget = 0;
+		}
+		else
+			if (raw_quantity < raw_need && raw_budget >= raw_quantity * raw_price)
+			{
+				raw += raw_quantity;
+				seller->sell_raw(raw_quantity);
+				raw_budget -= raw_quantity * raw_price;
+			}
+			else
+			{
+				raw += raw_budget/raw_price;
+				seller->sell_raw(raw_budget/raw_price);
+				raw_budget = 0;
+			}
+	//recheck cases
 	return seller;
 }
 
