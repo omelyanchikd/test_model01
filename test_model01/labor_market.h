@@ -6,6 +6,8 @@
 #include "generator.h"
 
 #include <vector>
+#include <map>
+
 #include <string>
 
 using namespace std;
@@ -23,7 +25,7 @@ private:
 	vector<household*> households;
 	vector<firm*> firms;
 
-	vector<double> probabilities;
+	map<firm*, double> probabilities;
 
 };
 

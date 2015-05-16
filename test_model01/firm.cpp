@@ -24,7 +24,7 @@ string firm::set_vacancy()
 		needed_workers = 0;
 		fire();
 	}
-	salary = salary_budget/labor_capacity;//*/
+	salary = salary_budget/labor_capacity;
 	return parse(salary, needed_workers);
 }
 
@@ -64,22 +64,22 @@ void firm::sell_raw(double amount)
 	sales += amount * price;
 }
 
-int firm::buy_raw(vector<double> probabilities, vector<firm*> sellers)
+firm* firm::buy_raw(map<firm*, double> probabilities)
 {
 	if (raw == raw_capacity || raw_budget == 0)
-		return -1;
-	int index = get_random(probabilities);
-	double raw_quantity = sellers[index]->get_quantity();
-	double raw_price = sellers[index]->get_price();
+		return NULL;
+	firm* seller = get_random(probabilities);
+	double raw_quantity = seller->get_quantity();
+	double raw_price = seller->get_price();
 	double raw_need = raw_capacity - raw;
 	if (raw_quantity >= raw_need && raw_budget >= raw_need * raw_price)
 	{
 		raw += raw_need;
 		raw_budget -= raw_need * raw_price;
-		sellers[index]->sell_raw(raw_need);
+		seller->sell_raw(raw_need);
 	}
 	//add other cases
-	return index;
+	return seller;
 }
 
 string firm::parse(double a, double b)

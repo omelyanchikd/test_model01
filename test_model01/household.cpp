@@ -13,24 +13,24 @@ void household::fire()
 	salary = 0;
 }
 
-void household::find_work(vector<double> probabilities, vector<firm*> firms)
+void household::find_work(map<firm*, double> probabilities)
 {
 	if (employer != NULL)
 		salary = employer->get_salary();
-	int index = get_random(probabilities);
-	if (firms[index]->get_salary() > salary && firms[index]->get_needed_workers() > 0)
+	firm* offer = get_random(probabilities);
+	if (offer->get_salary() > salary && offer->get_needed_workers() > 0)
 	{
 		if (employer != NULL)
 		{
 			employer->quit(this);
 		}
-		employer = firms[index];
-		salary = firms[index]->get_salary();
-		firms[index]->hire(this);
+		employer = offer;
+		salary = offer->get_salary();
+		offer->hire(this);
 	}
 }
 
-void household::buy(vector<double> probabilities, vector<firm*> firms)
+void household::buy(map<firm*, double> probabilities)
 {
 	//if (budget 
 }

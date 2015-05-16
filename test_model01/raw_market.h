@@ -6,6 +6,7 @@
 #include "generator.h"
 
 #include <vector>
+#include <map>
 
 using namespace std;
 
@@ -22,9 +23,9 @@ public:
 
 private:
 
-	vector<firm*> buyers;
 	vector<firm*> sellers;
+	vector<firm*> buyers;
 
-	vector<double> probabilities;
+	map<firm*, double> probabilities;
 };
 

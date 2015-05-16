@@ -1,8 +1,10 @@
 #pragma once
 
 #include "household.h"
+#include "generator.h"
 
 #include <vector>
+#include <map>
 
 #include <string>
 #include <sstream>
@@ -22,7 +24,7 @@ public:
 	void hire(household* worker);
 	void quit(household* worker);
 	
-	int buy_raw(vector<double> probabilities, vector<firm*> firms);
+	firm* buy_raw(map<firm*, double> probabilities);
 	void buy_capital();
 
 	void produce_raw();

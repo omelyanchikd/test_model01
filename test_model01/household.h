@@ -1,7 +1,6 @@
 #pragma once
 
 #include "firm.h"
-
 #include "generator.h"
 
 #include <vector>
@@ -17,8 +16,8 @@ public:
 	household(void);
 
 	void fire();
-	void find_work(vector<double> probabilities, vector<firm*> firms);
-	void buy(vector<double> probabilities, vector<firm*> firms);
+	void find_work(map <firm*, double> probabilities);
+	void buy(map <firm*, double> probabilities);
 
 private:
 	
