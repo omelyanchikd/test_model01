@@ -90,11 +90,9 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="capital_market.cpp" />
     <ClCompile Include="firm.cpp" />
-    <ClCompile Include="firms.cpp" />
     <ClCompile Include="generator.cpp" />
     <ClCompile Include="good_market.cpp" />
     <ClCompile Include="household.cpp" />
-    <ClCompile Include="households.cpp" />
     <ClCompile Include="labor_market.cpp" />
     <ClCompile Include="raw_market.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -107,14 +105,12 @@
   <ItemGroup>
     <ClInclude Include="capital_market.h" />
     <ClInclude Include="firm.h" />
-    <ClInclude Include="firms.h" />
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="generator.h" />
     <ClInclude Include="good_market.h" />
     <ClInclude Include="household.h" />
-    <ClInclude Include="households.h" />
     <ClInclude Include="labor_market.h" />
     <ClInclude Include="raw_market.h" />
     <ClInclude Include="resource.h" />

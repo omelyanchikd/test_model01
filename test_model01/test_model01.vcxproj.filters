@@ -40,12 +40,6 @@
     <ClCompile Include="household.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="firms.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="households.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="labor_market.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -79,12 +73,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="household.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="firms.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="households.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="labor_market.h">
