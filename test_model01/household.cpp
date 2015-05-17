@@ -13,7 +13,7 @@ void household::fire()
 	salary = 0;
 }
 
-void household::find_work(map<firm*, double> probabilities)
+firm* household::find_work(map<firm*, double> probabilities)
 {
 	if (employer != NULL)
 		salary = employer->get_salary();
@@ -28,6 +28,7 @@ void household::find_work(map<firm*, double> probabilities)
 		salary = offer->get_salary();
 		offer->hire(this);
 	}
+	return employer;
 }
 
 void household::buy(map<firm*, double> probabilities)

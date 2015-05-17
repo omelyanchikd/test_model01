@@ -20,8 +20,17 @@ void labor_market::set_workers()
 {
 	for (int i = 0; i < households.size(); i++)
 	{
-		set_vacancies();
-		households[i]->find_work(probabilities);
+		firm *employer = households[i]->find_work(probabilities);
+		if (employer != NULL)
+			update(employer);
 	};
 }
 
+void labor_market::update(firm *employer)
+{
+	if (employer->get_needed_workers() == 0)
+	{
+		probabilities.erase(employer);
+		probabilities = allocate<firm*>(probabilities);
+	}
+}

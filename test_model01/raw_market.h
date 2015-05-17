@@ -19,7 +19,7 @@ public:
 	void sell();
 
 	bool empty();
-	void update(int bought);
+	void update(firm *seller);
 
 private:
 

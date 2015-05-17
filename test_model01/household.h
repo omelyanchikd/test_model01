@@ -16,7 +16,7 @@ public:
 	household(void);
 
 	void fire();
-	void find_work(map <firm*, double> probabilities);
+	firm* find_work(map <firm*, double> probabilities);
 	void buy(map <firm*, double> probabilities);
 
 private:

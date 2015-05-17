@@ -22,18 +22,20 @@ void raw_market::buy()
 	{
 		while (!empty())
 		{
-//			bought = buyers[i]->buy_raw(probabilities);
-//			update(bought);
+			firm *seller = buyers[i]->buy_raw(probabilities);
+			if (seller == NULL)
+				break;
+			update(seller);
 		}
 	}
 }
 
-void raw_market::update(int bought)
+void raw_market::update(firm *seller)
 {
-	if (sellers[bought]->get_quantity() == 0)
+	if (seller->get_quantity() == 0)
 	{
-//		probabilities.erase(probabilities.begin() + bought);
-//		probabilities = allocate(probabilities);
+		probabilities.erase(seller);
+		probabilities = allocate<firm*>(probabilities);
 	}
 }
 

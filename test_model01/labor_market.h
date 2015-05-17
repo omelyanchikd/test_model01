@@ -20,6 +20,7 @@ public:
 	void set_vacancies();
 	void set_workers();
 
+	void update(firm *employer);
 
 private:
 	vector<household*> households;
