@@ -17,7 +17,7 @@ void household::find_work(map<firm*, double> probabilities)
 {
 	if (employer != NULL)
 		salary = employer->get_salary();
-	firm* offer = get_random(probabilities);
+	firm* offer = get_random<firm*>(probabilities);
 	if (offer->get_salary() > salary && offer->get_needed_workers() > 0)
 	{
 		if (employer != NULL)

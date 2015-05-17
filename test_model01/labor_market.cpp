@@ -10,10 +10,10 @@ void labor_market::set_vacancies()
 {
 	for (int i = 0; i < firms.size(); i++)
 	{
-		if (firms[i]->get_needed_workers() > 0)
+		if (firms[i]->get_needed_workers() > 0);
 			probabilities[firms[i]] = (firms[i]->get_salary());
 	}
-	probabilities = allocate(probabilities);
+	probabilities = allocate<firm*>(probabilities);
 }
 
 void labor_market::set_workers()

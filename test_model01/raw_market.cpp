@@ -13,7 +13,7 @@ void raw_market::sell()
 		if (sellers[i]->get_quantity())
 			probabilities[sellers[i]] = sellers[i]->get_price();
 	}
-	probabilities = allocate(invert (probabilities));
+	probabilities = allocate<firm*>(invert (probabilities));
 }
 
 void raw_market::buy()

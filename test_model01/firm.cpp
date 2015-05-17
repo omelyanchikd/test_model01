@@ -68,7 +68,7 @@ firm* firm::buy_raw(map<firm*, double> probabilities)
 {
 	if (raw == raw_capacity || raw_budget == 0)
 		return NULL;
-	firm* seller = get_random(probabilities);
+	firm* seller = get_random<firm*>(probabilities);
 	double raw_quantity = seller->get_quantity();
 	double raw_price = seller->get_price();
 	double raw_need = raw_capacity - raw;
