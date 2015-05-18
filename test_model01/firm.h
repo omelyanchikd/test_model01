@@ -3,6 +3,12 @@
 #include "household.h"
 #include "generator.h"
 
+#include "raw_director.h"
+#include "capital_director.h"
+#include "good_director.h"
+
+#include "firm_director.h"
+
 #include <vector>
 #include <map>
 
@@ -20,6 +26,7 @@ class firm
 public:
 	
 	firm(void);
+	firm(string firm_type);
 
 	void fire();
 	void hire(household* worker);
@@ -28,9 +35,7 @@ public:
 	firm* buy_raw(map<firm*, double> probabilities);
 	void buy_capital();
 
-	void produce_raw();
-	void produce_capital();
-	void produce_good();
+	void produce();
 	
 	void sell_raw(double amount);
 	void sell_capital();
@@ -49,7 +54,7 @@ public:
 private:
 
 	firm_type type;
-	firm_director director;
+	firm_director *director;
 
 	double money;
 	double salary;

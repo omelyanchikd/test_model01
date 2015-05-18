@@ -6,6 +6,26 @@ firm::firm(void)
 {
 }
 
+firm::firm(string firm_type)
+{
+	if (firm_type == "raw_firm")
+	{
+		type = raw_firm;
+		director = new raw_director();
+	}
+	else
+		if (firm_type == "capital_firm")
+		{
+			type = capital_firm;
+			director = new capital_director();
+		}
+		else
+		{
+			type = good_firm;
+			director = new good_director();
+		}
+}
+
 void firm::fire()
 {
 	while (workers.size() > labor_capacity)
@@ -78,6 +98,11 @@ firm* firm::buy_raw(map<firm*, double> probabilities)
 			}
 	//recheck cases
 	return seller;
+}
+
+void firm::produce()
+{
+	director->produce(workers.size(), labor_productivity, raw, raw_productivity, capital, capital_productivity, quantity);
 }
 
 string firm::parse(double a, double b)
