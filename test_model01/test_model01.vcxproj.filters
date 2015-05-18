@@ -55,6 +55,18 @@
     <ClCompile Include="generator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="firm_director.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="raw_director.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="good_director.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="capital_director.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Form1.h">
@@ -88,6 +100,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="generator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="firm_director.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="raw_director.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="good_director.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="capital_director.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

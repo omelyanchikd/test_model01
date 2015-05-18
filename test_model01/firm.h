@@ -13,13 +13,14 @@ using namespace std;
 
 class household;
 
+enum firm_type {raw_firm, capital_firm, good_firm};
+
 class firm
 {
 public:
-	firm(void);
 	
-	string set_vacancy();
-	void get_workers();
+	firm(void);
+
 	void fire();
 	void hire(household* worker);
 	void quit(household* worker);
@@ -46,6 +47,9 @@ public:
 
 
 private:
+
+	firm_type type;
+	firm_director director;
 
 	double money;
 	double salary;
