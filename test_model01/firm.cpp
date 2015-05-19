@@ -30,15 +30,13 @@ void firm::fire()
 {
 	while (workers.size() > labor_capacity)
 	{
-		int i = rand()/RAND_MAX * workers.size();
-		workers[i]->fire();
-	}//*/
+		workers[rand()/RAND_MAX * workers.size()]->fire();
+	}
 }
 
 void firm::hire(household* worker)
 {
-	workers.push_back(worker);
-	needed_workers--;
+	workers.push_back(worker);	
 }
 
 void firm::quit(household* worker)
@@ -54,6 +52,14 @@ void firm::quit(household* worker)
 	}
 	if (index > -1)
 		workers.erase(workers.begin() + index);
+}
+
+void firm::get_vacancies()
+{
+	labor_capacity = plan/labor_productivity;
+	salary = salary_budget/labor_capacity;
+	if (labor_capacity > workers.size())
+		fire();
 }
 
 void firm::sell_raw(double amount)
@@ -121,7 +127,7 @@ double firm::get_salary()
 
 double firm::get_needed_workers()
 {
-	return needed_workers;
+	return (labor_capacity - workers.size());
 }
 
 double firm::get_price()

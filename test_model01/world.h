@@ -4,9 +4,7 @@
 #include "household.h"
 
 #include "labor_market.h"
-#include "raw_market.h"
-#include "capital_market.h"
-#include "good_market.h"
+#include "market.h"
 
 #include <vector>
 #include <map>
@@ -22,15 +20,13 @@ public:
 
 private:
 
-	vector<firm*> raw_firms;
-	vector<firm*> capital_firms;
-	vector<firm*> good_firms;
+	vector<firm*> firms;
 	vector<household*> households;
 
 	labor_market labormarket;
-	raw_market rawmarket;
-	good_market goodmarket;
-	capital_market capitalmarket;
+	market raw_market;
+	market good_market;
+	market capital_market;
 
 };
 

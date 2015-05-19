@@ -31,6 +31,8 @@ public:
 	void fire();
 	void hire(household* worker);
 	void quit(household* worker);
+
+	void get_vacancies();
 	
 	firm* buy_raw(map<firm*, double> probabilities);
 	void buy_capital();
@@ -65,7 +67,7 @@ private:
 	double capital_budget;
 	double salary_budget;
 
-	double needed_workers;
+//	double needed_workers;
 
 	double labor_capacity;
 	double raw_capacity;

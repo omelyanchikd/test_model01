@@ -89,16 +89,14 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="capital_director.cpp" />
-    <ClCompile Include="capital_market.cpp" />
     <ClCompile Include="firm.cpp" />
     <ClCompile Include="firm_director.cpp" />
     <ClCompile Include="generator.cpp" />
     <ClCompile Include="good_director.cpp" />
-    <ClCompile Include="good_market.cpp" />
     <ClCompile Include="household.cpp" />
     <ClCompile Include="labor_market.cpp" />
     <ClCompile Include="raw_director.cpp" />
-    <ClCompile Include="raw_market.cpp" />
+    <ClCompile Include="market.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -108,7 +106,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="capital_director.h" />
-    <ClInclude Include="capital_market.h" />
     <ClInclude Include="firm.h" />
     <ClInclude Include="firm_director.h" />
     <ClInclude Include="Form1.h">
@@ -116,11 +113,10 @@
     </ClInclude>
     <ClInclude Include="generator.h" />
     <ClInclude Include="good_director.h" />
-    <ClInclude Include="good_market.h" />
     <ClInclude Include="household.h" />
     <ClInclude Include="labor_market.h" />
     <ClInclude Include="raw_director.h" />
-    <ClInclude Include="raw_market.h" />
+    <ClInclude Include="market.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="world.h" />

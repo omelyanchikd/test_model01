@@ -43,15 +43,6 @@
     <ClCompile Include="labor_market.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="capital_market.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="raw_market.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="good_market.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="generator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -65,6 +56,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="capital_director.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="market.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -90,15 +84,6 @@
     <ClInclude Include="labor_market.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="capital_market.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="raw_market.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="good_market.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="generator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -112,6 +97,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="capital_director.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="market.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
