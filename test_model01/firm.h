@@ -72,8 +72,11 @@ private:
 	double capital_capacity;
 
 	double labor_productivity;
+	double raw_labor_productivity;
 	double raw_productivity;
 	double capital_productivity;
+	double amortization;
+
 	double elasticity;
 
 	double capital;

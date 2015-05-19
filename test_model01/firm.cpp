@@ -102,7 +102,7 @@ firm* firm::buy_raw(map<firm*, double> probabilities)
 
 void firm::produce()
 {
-	director->produce(workers.size(), labor_productivity, raw, raw_productivity, capital, capital_productivity, quantity);
+	director->produce(workers.size(), labor_productivity, raw_labor_productivity, raw, raw_productivity, capital, capital_productivity, amortization, quantity);
 }
 
 string firm::parse(double a, double b)
