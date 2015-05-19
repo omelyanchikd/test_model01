@@ -1,7 +1,7 @@
 #pragma once
 
-#include "market_sellers.h"
-#include "market_buyers.h"
+#include "firm.h"
+#include "household.h"
 
 #include "generator.h"
 
@@ -16,7 +16,8 @@ class market
 {
 public:
 	market(void);
-
+	market(string market_type, vector<void*> buyers);
+	
 	void buy();
 	void sell();
 
@@ -27,9 +28,9 @@ private:
 
 	market_type type;
 
-	vector<market_sellers*> sellers;
-	vector<market_buyers*> buyers;
+	vector<firm*> sellers;
+	vector<void*> buyers;
 
-	map<market_sellers*, double> probabilities;
+	map<firm*, double> probabilities;
 };
 

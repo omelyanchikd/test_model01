@@ -13,7 +13,7 @@ void market::sell()
 		if (sellers[i]->get_quantity())
 			probabilities[sellers[i]] = sellers[i]->get_price();
 	}
-	probabilities = allocate<firm*>(invert (probabilities));
+	probabilities = allocate<firm*>(invert<firm*>(probabilities));
 }
 
 void market::buy()
