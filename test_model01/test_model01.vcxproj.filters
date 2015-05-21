@@ -61,6 +61,9 @@
     <ClCompile Include="market.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="agent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Form1.h">
@@ -100,6 +103,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="market.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="agent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

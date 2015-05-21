@@ -1,5 +1,7 @@
 #pragma once
 
+#include "agent.h"
+
 #include "firm.h"
 #include "household.h"
 
@@ -10,27 +12,32 @@
 
 using namespace std;
 
-enum market_type{raw_market, capital_market, good_market};
-
 class market
 {
 public:
 	market(void);
-	market(string market_type, vector<void*> buyers);
-	
+	market(string market_type, vector<agent*> _buyers, vector<agent*> _sellers);
+
+	void activate();
+	void match();
+
 	void buy();
 	void sell();
 
 	bool empty();
-	void update(firm *seller);
+	void update(agent *seller);
+
+	string get_type();
 
 private:
 
-	market_type type;
+	string type;
 
-	vector<firm*> sellers;
-	vector<void*> buyers;
+	vector<agent*> sellers;
+	vector<agent*> buyers;
 
-	map<firm*, double> probabilities;
+	map<agent*, double> probabilities;
+
+	
 };
 

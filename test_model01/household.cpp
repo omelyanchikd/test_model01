@@ -31,7 +31,35 @@ firm* household::find_work(map<firm*, double> probabilities)
 	return employer;
 }
 
-void household::buy(map<firm*, double> probabilities)
+firm* household::buy(string market_type, map<firm*, double> probabilities)
 {
-	//if (budget 
+	if (market_type == "labor_market")
+		return find_work(probabilities);
+	else
+		return buy(consumption_budget, probabilities);
+}
+
+firm* household::buy(double &budget, map<firm*, double> probabilities)
+{
+	if (budget == 0)
+		return NULL;
+	firm* seller = get_random<firm*>(probabilities);
+	double quantity = seller->get_quantity();
+	double price = seller->get_price();
+	if (budget >= quantity * price)
+	{
+		seller->sell(quantity);
+		budget -= quantity * price;
+	}
+	else
+	{
+		seller->sell(budget/price);
+		budget = 0;
+	}
+	return seller;
+}
+
+double household::get_salary()
+{
+	return salary;
 }

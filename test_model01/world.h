@@ -23,7 +23,7 @@ private:
 	vector<firm*> firms;
 	vector<household*> households;
 
-	labor_market labormarket;
+	market labor_market;
 	market raw_market;
 	market good_market;
 	market capital_market;

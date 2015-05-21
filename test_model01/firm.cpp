@@ -8,20 +8,18 @@ firm::firm(void)
 
 firm::firm(string firm_type)
 {
-	if (firm_type == "raw_firm")
+	type = firm_type;
+	if (type == "raw_firm")
 	{
-		type = raw_firm;
 		director = new raw_director();
 	}
 	else
-		if (firm_type == "capital_firm")
+		if (type == "capital_firm")
 		{
-			type = capital_firm;
 			director = new capital_director();
 		}
 		else
 		{
-			type = good_firm;
 			director = new good_director();
 		}
 }
@@ -62,47 +60,47 @@ void firm::get_vacancies()
 		fire();
 }
 
-void firm::sell_raw(double amount)
+void firm::sell(double amount)
 {
 	quantity -= amount;
 	sales += amount * price;
 }
 
-firm* firm::buy_raw(map<firm*, double> probabilities)
+firm* firm::buy(string market_type, map<firm*, double> probabilities)
 {
-	if (raw == raw_capacity || raw_budget == 0)
+	if (market_type == "raw_market")
+		return buy(raw, raw_capacity, raw_budget, probabilities);
+	else
+		return buy(capital, capital_capacity, capital_budget, probabilities);
+}
+
+firm* firm::buy(double &factor, double &capacity, double &budget, map<firm*, double> probabilities)
+{
+	if (factor == capacity || budget == 0)
 		return NULL;
 	firm* seller = get_random<firm*>(probabilities);
-	double raw_quantity = seller->get_quantity();
-	double raw_price = seller->get_price();
-	double raw_need = raw_capacity - raw;
-	if (raw_quantity >= raw_need && raw_budget >= raw_need * raw_price)
+	double quantity = seller->get_quantity();
+	double price = seller->get_price();
+	double need = capacity - factor;
+	if (quantity >= need && budget >= need * price)
 	{
-		raw += raw_need;
-		raw_budget -= raw_need * raw_price;
-		seller->sell_raw(raw_need);
+		factor += need;
+		budget -= need * price;
+		seller->sell(need);
 	}
 	else
-		if (raw_quantity >= raw_need && raw_budget < raw_need * raw_price)
+		if (quantity < need && budget >= quantity * price)
 		{
-			raw += raw_budget/raw_price;
-			seller->sell_raw(raw_budget/raw_price);
-			raw_budget = 0;
+			factor += quantity;
+			seller->sell(quantity);
+			budget -= quantity * price;
 		}
 		else
-			if (raw_quantity < raw_need && raw_budget >= raw_quantity * raw_price)
-			{
-				raw += raw_quantity;
-				seller->sell_raw(raw_quantity);
-				raw_budget -= raw_quantity * raw_price;
-			}
-			else
-			{
-				raw += raw_budget/raw_price;
-				seller->sell_raw(raw_budget/raw_price);
-				raw_budget = 0;
-			}
-	//recheck cases
+		{
+			factor += budget/price;
+			seller->sell(budget/price);
+			budget = 0;
+		}
 	return seller;
 }
 

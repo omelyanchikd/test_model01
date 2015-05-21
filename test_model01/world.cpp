@@ -8,9 +8,10 @@ world::world(void)
 
 void world::step()
 {
-	labormarket.set_vacancies();
-	labormarket.set_workers();
-//	capitalmarket.buy(raw_firms);
+	labor_market.activate();
+	labor_market.match();
+	capital_market.activate();
+	capital_market.match("raw_firm");
 /*	raw_firms.produce();
 	rawmarket.sell();
 	rawmarket.buy(capital_firms);

@@ -16,4 +16,5 @@ void capital_director::produce(int workers, double labor_productivity, double ra
 	quantity = (capital_productivity * capital + raw_labor_productivity * (workers - capital_productivity * capital/labor_productivity) > raw_productivity * raw)? capital_productivity * capital + raw_labor_productivity * (workers - capital_productivity * capital/labor_productivity) : raw_productivity * raw;
 	capital -= amortization * capital;
 	raw -= quantity/raw_productivity;
+//	price = 
 }

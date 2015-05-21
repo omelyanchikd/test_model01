@@ -1,5 +1,7 @@
 #pragma once
 
+#include "agent.h"
+
 #include "household.h"
 #include "generator.h"
 
@@ -19,9 +21,9 @@ using namespace std;
 
 class household;
 
-enum firm_type {raw_firm, capital_firm, good_firm};
+//enum firm_type {raw_firm, capital_firm, good_firm};
 
-class firm
+class firm: public agent
 {
 public:
 	
@@ -34,14 +36,12 @@ public:
 
 	void get_vacancies();
 	
-	firm* buy_raw(map<firm*, double> probabilities);
-	void buy_capital();
+	firm* buy(string market_type, map<firm*, double> probabilities);
+	firm* buy(double &factor, double &capacity, double &budget, map<firm*, double> probabilities);
 
 	void produce();
 	
-	void sell_raw(double amount);
-	void sell_capital();
-	void sell_good();
+	void sell(double amount);
 	
 	void get_sales();
 
@@ -55,7 +55,7 @@ public:
 
 private:
 
-	firm_type type;
+	string type;
 	firm_director *director;
 
 	double money;
@@ -92,6 +92,6 @@ private:
 
 	vector<household*> workers;
 
-	string parse(double a, double b);
+	string parse(double a, double b);	
 };
 
