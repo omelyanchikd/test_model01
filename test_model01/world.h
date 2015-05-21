@@ -1,9 +1,10 @@
 #pragma once
 
-#include "firm.h"
+
+
+#include "firms.h"
 #include "household.h"
 
-#include "labor_market.h"
 #include "market.h"
 
 #include <vector>
@@ -20,7 +21,7 @@ public:
 
 private:
 
-	vector<firm*> firms;
+	firms _firms;
 	vector<household*> households;
 
 	market labor_market;

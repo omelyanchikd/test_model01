@@ -24,6 +24,20 @@ firm::firm(string firm_type)
 		}
 }
 
+void firm::activate(string market_type)
+{
+	if (market_type == "labor_market")
+	{
+		set_vacancies();
+	}
+	else
+	{
+		produce();
+		storage += production;
+		price = pricing();
+	}
+}
+
 void firm::fire()
 {
 	while (workers.size() > labor_capacity)
@@ -52,7 +66,7 @@ void firm::quit(household* worker)
 		workers.erase(workers.begin() + index);
 }
 
-void firm::get_vacancies()
+void firm::set_vacancies()
 {
 	labor_capacity = plan/labor_productivity;
 	salary = salary_budget/labor_capacity;
@@ -60,10 +74,11 @@ void firm::get_vacancies()
 		fire();
 }
 
-void firm::sell(double amount)
+void firm::sell(double quantity)
 {
-	quantity -= amount;
-	sales += amount * price;
+	storage -= quantity;
+	sales += quantity * price;
+	sold += quantity;
 }
 
 firm* firm::buy(string market_type, map<firm*, double> probabilities)
@@ -106,7 +121,30 @@ firm* firm::buy(double &factor, double &capacity, double &budget, map<firm*, dou
 
 void firm::produce()
 {
-	director->produce(workers.size(), labor_productivity, raw_labor_productivity, raw, raw_productivity, capital, capital_productivity, amortization, quantity);
+	director->produce(workers.size(), labor_productivity, raw_labor_productivity, raw, raw_productivity, capital, capital_productivity, amortization, production);
+}
+
+double firm::pricing()
+{
+	return director->pricing(workers.size(), salary, raw_investments, capital_investments, amortization, elasticity, production);
+}
+
+void firm::learn()
+{
+	if (time < period)
+	{
+		history.push_back(sold);
+		sold = 0;
+	}
+	else
+	{
+		plan = aproximation * sold + 1/period * summarize(history);
+		history.erase(history.begin());
+		history.push_back(sold);
+		sold = 0;
+	}
+	director->learn(sales, salary_coefficient, raw_coefficient, capital_coefficient, salary_budget, raw_budget, capital_budget);
+	time++;
 }
 
 string firm::parse(double a, double b)
@@ -116,6 +154,11 @@ string firm::parse(double a, double b)
 	buffer << " ";
 	buffer << b;
 	return buffer.str();
+}
+
+string firm::get_type()
+{
+	return type;
 }
 
 double firm::get_salary()
@@ -133,7 +176,7 @@ double firm::get_price()
 	return price;
 }
 
-double firm::get_quantity()
+double firm::get_storage()
 {
-	return quantity;
+	return storage;
 }

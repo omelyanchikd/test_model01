@@ -91,11 +91,11 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="capital_director.cpp" />
     <ClCompile Include="firm.cpp" />
+    <ClCompile Include="firms.cpp" />
     <ClCompile Include="firm_director.cpp" />
     <ClCompile Include="generator.cpp" />
     <ClCompile Include="good_director.cpp" />
     <ClCompile Include="household.cpp" />
-    <ClCompile Include="labor_market.cpp" />
     <ClCompile Include="raw_director.cpp" />
     <ClCompile Include="market.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -109,6 +109,7 @@
     <ClInclude Include="agent.h" />
     <ClInclude Include="capital_director.h" />
     <ClInclude Include="firm.h" />
+    <ClInclude Include="firms.h" />
     <ClInclude Include="firm_director.h" />
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
@@ -116,7 +117,6 @@
     <ClInclude Include="generator.h" />
     <ClInclude Include="good_director.h" />
     <ClInclude Include="household.h" />
-    <ClInclude Include="labor_market.h" />
     <ClInclude Include="raw_director.h" />
     <ClInclude Include="market.h" />
     <ClInclude Include="resource.h" />

@@ -30,27 +30,32 @@ public:
 	firm(void);
 	firm(string firm_type);
 
+	void activate(string market_type);
+
 	void fire();
 	void hire(household* worker);
 	void quit(household* worker);
 
-	void get_vacancies();
+	void set_vacancies();
 	
 	firm* buy(string market_type, map<firm*, double> probabilities);
 	firm* buy(double &factor, double &capacity, double &budget, map<firm*, double> probabilities);
 
+	double pricing();
 	void produce();
 	
-	void sell(double amount);
+	void sell(double quantity);
 	
 	void get_sales();
 
 	void learn();
 
+	string get_type();
+
 	double get_salary();
 	double get_needed_workers();
 	double get_price();
-	double get_quantity();
+	double get_storage();
 
 
 private:
@@ -83,14 +88,27 @@ private:
 
 	double capital;
 	double raw;
-	double good;
 
-	double quantity;
+	double capital_investments;
+	double raw_investments;
+
+	double production;
+	double storage;
+
+	double aproximation;
+	double period;
+	double time;
+	vector<double> history;
+
+	double salary_coefficient;
+	double raw_coefficient;
+	double capital_coefficient;
+
+	vector<household*> workers;
+	double sold;
 
 	double sales;
 	double profit;
-
-	vector<household*> workers;
 
 	string parse(double a, double b);	
 };

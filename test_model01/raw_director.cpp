@@ -16,3 +16,14 @@ void raw_director::produce(int workers, double labor_productivity, double raw_la
 	quantity = capital_productivity * capital + raw_labor_productivity * (workers - capital_productivity * capital/labor_productivity);
 	capital -= amortization * capital;	
 }
+
+double raw_director::pricing(int workers, double salary, double raw_investments, double capital_investments, double amortization, double elasticity, double production)
+{
+	return ((production > 0)?((workers * salary + amortization * capital_investments) / (production * (1 + 1/elasticity))):0);
+}
+
+void raw_director::learn(double sales, double salary_coefficient, double raw_coefficient, double capital_coefficient, double &salary_budget, double &raw_budget, double &capital_budget)
+{
+	salary_budget = salary_coefficient * sales;
+	capital_budget = capital_coefficient * sales;
+}

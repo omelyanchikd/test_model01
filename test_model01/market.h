@@ -20,6 +20,7 @@ public:
 
 	void activate();
 	void match();
+	void match(string firm_type);
 
 	void buy();
 	void sell();

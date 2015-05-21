@@ -20,15 +20,17 @@ void market::activate()
 	{		
 		for (int i = 0; i < sellers.size(); i++)
 		{
+			sellers[i]->activate(type);
 			if (sellers[i]->get_quantity())
 				probabilities[sellers[i]] = sellers[i]->get_price();
 		}
 		probabilities = allocate<agent*>(invert<agent*>(probabilities));
 	}
 	else
-	{
+	{		
 		for (int i = 0; i < buyers.size(); i++)
 		{
+			buyers[i]->activate(type);
 			if (buyers[i]->get_needed_workers() > 0)
 				probabilities[buyers[i]] = (buyers[i]->get_salary());
 		}
@@ -59,6 +61,23 @@ void market::match()
 			if (employer != NULL)
 				update(employer);
 		};
+	}
+}
+
+void market::match(string firm_type)
+{
+	for (int i = 0; i < buyers.size(); i++)
+	{
+		if (buyers[i]->get_type() == firm_type)
+		{
+			while (!empty())
+			{	
+				agent *seller = buyers[i]->buy(type, probabilities);
+				if (seller == NULL)
+					break;
+				update(seller);
+			}
+		}
 	}
 }
 
