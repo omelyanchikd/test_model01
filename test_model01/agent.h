@@ -16,6 +16,7 @@ public:
 	virtual agent* find_work(map<agent*, double> probabilities) = 0;
 
 	virtual void activate(string market_type) = 0;
+	virtual void decide(string market_type) = 0;
 	
 	virtual string get_type() = 0;
 

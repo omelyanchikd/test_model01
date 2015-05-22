@@ -38,6 +38,20 @@ void firm::activate(string market_type)
 	}
 }
 
+void firm::decide(string market_type)
+{
+	if (market_type == "raw_market")
+	{
+		raw_capacity = min(labor_productivity * workers.size()/raw_productivity, capital_productivity * capital/raw_productivity);
+	}
+	else
+		if (market_type == "capital_market")
+		{
+			capital_capacity = capital + director->investments();
+		}
+
+}
+
 void firm::fire()
 {
 	while (workers.size() > labor_capacity)

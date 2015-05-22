@@ -2,7 +2,7 @@
 
 
 
-#include "firms.h"
+#include "firm.h"
 #include "household.h"
 
 #include "market.h"
@@ -19,9 +19,12 @@ public:
 
 	void step();
 
+	vector<firm*> get_firms(string firm_type);
+	vector<firm*> get_firms(string firm_type1, string firm_type2);
+
 private:
 
-	firms _firms;
+	vector<firm*> firms;
 	vector<household*> households;
 
 	market labor_market;

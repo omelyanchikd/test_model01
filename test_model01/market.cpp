@@ -16,46 +16,42 @@ market::market(string market_type, vector<agent*> _sellers, vector<agent*> _buye
 
 void market::activate()
 {
-	if (type != "labor_market")	
-	{		
-		for (int i = 0; i < sellers.size(); i++)
+	for (int i = 0; i < sellers.size(); i++)
+	{
+		sellers[i]->activate(type);
+		if (type != "labor_market")
 		{
-			sellers[i]->activate(type);
 			if (sellers[i]->get_quantity())
 				probabilities[sellers[i]] = sellers[i]->get_price();
 		}
-		probabilities = allocate<agent*>(invert<agent*>(probabilities));
-	}
-	else
-	{		
-		for (int i = 0; i < buyers.size(); i++)
+		else
 		{
-			buyers[i]->activate(type);
-			if (buyers[i]->get_needed_workers() > 0)
-				probabilities[buyers[i]] = (buyers[i]->get_salary());
+			if (sellers[i]->get_needed_workers() > 0)
+				probabilities[sellers[i]] = (sellers[i]->get_salary());
 		}
-		probabilities = allocate<agent*>(probabilities);
 	}
+	if (type != "labor_market")
+		probabilities = allocate<agent*>(invert<agent*>(probabilities));
+	else
+		probabilities = allocate<agent*>(probabilities);
 }
 
 void market::match()
 {
-	if (type != "labor_market")
+	for (int i = 0; i < buyers.size(); i++)
 	{
-		for (int i = 0; i < buyers.size(); i++)
+		if (type != "labor_market")
 		{
+			buyers[i]->decide(type);
 			while (!empty())
 			{
 				agent *seller = buyers[i]->buy(type, probabilities);
 				if (seller == NULL)
 					break;
 				update(seller);
-			}
+			}		
 		}
-	}
-	else
-	{
-		for (int i = 0; i < sellers.size(); i++)
+		else
 		{
 			agent *employer = sellers[i]->find_work(probabilities);
 			if (employer != NULL)

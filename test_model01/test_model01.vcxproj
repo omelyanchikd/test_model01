@@ -91,7 +91,6 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="capital_director.cpp" />
     <ClCompile Include="firm.cpp" />
-    <ClCompile Include="firms.cpp" />
     <ClCompile Include="firm_director.cpp" />
     <ClCompile Include="generator.cpp" />
     <ClCompile Include="good_director.cpp" />
@@ -109,7 +108,6 @@
     <ClInclude Include="agent.h" />
     <ClInclude Include="capital_director.h" />
     <ClInclude Include="firm.h" />
-    <ClInclude Include="firms.h" />
     <ClInclude Include="firm_director.h" />
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>

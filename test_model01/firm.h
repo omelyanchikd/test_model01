@@ -31,6 +31,7 @@ public:
 	firm(string firm_type);
 
 	void activate(string market_type);
+	void decide(string market_type);
 
 	void fire();
 	void hire(household* worker);

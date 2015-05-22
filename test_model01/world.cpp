@@ -11,17 +11,36 @@ void world::step()
 	labor_market.activate();
 	labor_market.match();
 	capital_market.match("raw_firm");
-	(_firms.get_firms("raw_firm")).produce();
 	raw_market.activate();
 	raw_market.match("capital_firm");
 	capital_market.match("capital_firm");
-	(_firms.get_firms("capital_firm")).produce();
 	capital_market.activate();
 	raw_market.match("good_firm");
 	capital_market.match("good_firm");
-	(_firms.get_firms("good_firm")).produce();
 	good_market.activate();
 	good_market.match();
-	_firms.learn();
+//	_firms.learn();
+}
+
+vector<firm*> world::get_firms(string firm_type)
+{
+	vector<firm*> result;
+	for (int i = 0; i < firms.size(); i++)
+	{
+		if (firms[i]->get_type() == firm_type)
+			result.push_back(firms[i]);
+	}
+	return result;
+}
+
+vector<firm*> world::get_firms(string firm_type1, string firm_type2)
+{
+	vector<firm*> result;
+	for (int i = 0; i < firms.size(); i++)
+	{
+		if (firms[i]->get_type() == firm_type1 || firms[i]->get_type() == firm_type2)
+			result.push_back(firms[i]);
+	}
+	return result;
 }
 
