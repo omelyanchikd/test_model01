@@ -47,7 +47,7 @@ void firm::decide(string market_type)
 	else
 		if (market_type == "capital_market")
 		{
-			capital_capacity = capital + director->investments();
+			capital_capacity = director->investments(plan, workers.size(), labor_productivity, raw_labor_productivity, capital_productivity);
 		}
 
 }
@@ -145,6 +145,7 @@ double firm::pricing()
 
 void firm::learn()
 {
+	capital = (1 - amortization) * capital;
 	if (time < period)
 	{
 		history.push_back(sold);

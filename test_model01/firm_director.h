@@ -11,7 +11,7 @@ public:
 
 	virtual void learn(double sales, double salary_coefficient, double raw_coefficient, double capital_coefficient, double &salary_budget, double &raw_budget, double &capital_budget) = 0;
 
-	virtual double investments(int workers, double labor_productivity, double raw_labor_productivity, double capital_productivity, double amortization, double capital, double raw_productivity, double raw) = 0;
+	virtual double investments(double plan, int workers, double labor_productivity, double raw_labor_productivity, double capital_productivity) = 0;
 	
 	double min(double a, double b, double c);
 };

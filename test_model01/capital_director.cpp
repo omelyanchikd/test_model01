@@ -23,6 +23,11 @@ double capital_director::pricing(int workers, double salary, double raw_investme
 	return ((production > 0)?((workers * salary + amortization * capital_investments + raw_investments) / (production * (1 + 1/elasticity))):0);
 }
 
+double capital_director::investments(double plan, int workers, double labor_productivity, double raw_labor_productivity, double capital_productivity)
+{
+	return (labor_productivity * (plan - raw_labor_productivity * workers))/(capital_productivity * (labor_productivity - raw_labor_productivity));
+}
+
 void capital_director::learn(double sales, double salary_coefficient, double raw_coefficient, double capital_coefficient, double &salary_budget, double &raw_budget, double &capital_budget)
 {
 	salary_budget = salary_coefficient * sales;
