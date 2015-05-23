@@ -40,7 +40,7 @@ public:
 	void set_vacancies();
 	
 	firm* buy(string market_type, map<firm*, double> probabilities);
-	firm* buy(double &factor, double &capacity, double &budget, map<firm*, double> probabilities);
+	firm* buy(double &factor, double &capacity, double &budget, double &investments, map<firm*, double> probabilities);
 
 	double pricing();
 	void produce();

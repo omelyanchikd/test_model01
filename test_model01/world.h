@@ -32,5 +32,6 @@ private:
 	market good_market;
 	market capital_market;
 
+	void learn();
 };
 

@@ -98,12 +98,12 @@ void firm::sell(double quantity)
 firm* firm::buy(string market_type, map<firm*, double> probabilities)
 {
 	if (market_type == "raw_market")
-		return buy(raw, raw_capacity, raw_budget, probabilities);
+		return buy(raw, raw_capacity, raw_budget, raw_investments, probabilities);
 	else
-		return buy(capital, capital_capacity, capital_budget, probabilities);
+		return buy(capital, capital_capacity, capital_budget, capital_investments, probabilities);
 }
 
-firm* firm::buy(double &factor, double &capacity, double &budget, map<firm*, double> probabilities)
+firm* firm::buy(double &factor, double &capacity, double &budget, double &investments, map<firm*, double> probabilities)
 {
 	if (factor == capacity || budget == 0)
 		return NULL;
@@ -114,6 +114,7 @@ firm* firm::buy(double &factor, double &capacity, double &budget, map<firm*, dou
 	if (quantity >= need && budget >= need * price)
 	{
 		factor += need;
+		investments += need * price;
 		budget -= need * price;
 		seller->sell(need);
 	}
@@ -122,12 +123,14 @@ firm* firm::buy(double &factor, double &capacity, double &budget, map<firm*, dou
 		{
 			factor += quantity;
 			seller->sell(quantity);
+			investments += quantity * price;
 			budget -= quantity * price;
 		}
 		else
 		{
 			factor += budget/price;
 			seller->sell(budget/price);
+			investments += budget;
 			budget = 0;
 		}
 	return seller;
@@ -145,7 +148,7 @@ double firm::pricing()
 
 void firm::learn()
 {
-	capital = (1 - amortization) * capital;
+	raw_investments = 0;
 	if (time < period)
 	{
 		history.push_back(sold);

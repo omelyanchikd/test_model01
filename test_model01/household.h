@@ -18,10 +18,13 @@ public:
 	household(void);
 
 	void fire();
+
+	void decide(string market_type);
+
 	firm* find_work(map <firm*, double> probabilities);
 
 	firm* buy(string market_type, map<firm*, double> probabilities);
-	firm *buy(double &budget, map<firm*, double> probabilities);
+	firm *buy(double &need, double &consumption, double &budget, map<firm*, double> probabilities);
 
 	double get_salary();
 
@@ -35,7 +38,7 @@ private:
 	bool employed;
 
 	double consumption_budget;
+	double consumption;
 	double consumption_need;
-
 };
 
