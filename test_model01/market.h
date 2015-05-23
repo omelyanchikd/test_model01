@@ -16,7 +16,7 @@ class market
 {
 public:
 	market(void);
-	market(string market_type, vector<agent*> _buyers, vector<agent*> _sellers);
+	market(string market_type, vector<agent*> _sellers, vector<agent*> _buyers);
 
 	void activate();
 	void match();

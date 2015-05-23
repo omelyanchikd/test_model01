@@ -9,7 +9,7 @@ public:
 
 	void produce(int workers, double labor_productivity, double raw_labor_productivity, double &raw, double raw_productivity, double &capital, double capital_productivity, double amortization, double &quantity);
 
-	double pricing(int workers, double salary, double raw_investments, double capital_investments, double amortization, double elasticity, double production);
+	double pricing(int workers, double salary, double raw_investments, double capital_investments, double amortization, double elasticity, double production, double price);
 
 	double investments(double plan, int workers, double labor_productivity, double raw_labor_productivity, double capital_productivity);
 

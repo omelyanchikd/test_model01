@@ -27,10 +27,10 @@ private:
 	vector<firm*> firms;
 	vector<household*> households;
 
-	market labor_market;
-	market raw_market;
-	market good_market;
-	market capital_market;
+	market *labor_market;
+	market *raw_market;
+	market *good_market;
+	market *capital_market;
 
 	void learn();
 };

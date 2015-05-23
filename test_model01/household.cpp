@@ -13,6 +13,10 @@ void household::fire()
 	salary = 0;
 }
 
+void household::activate(string market_type)
+{
+}
+
 void household::decide(string market_type)
 {
 /*	if (money > 0.6 * salary)
@@ -23,25 +27,25 @@ void household::decide(string market_type)
 	consumption_need = 2;
 }
 
-firm* household::find_work(map<firm*, double> probabilities)
+agent* household::find_work(map<agent*, double> probabilities)
 {
 	if (employer != NULL)
 		salary = employer->get_salary();
-	firm* offer = get_random<firm*>(probabilities);
-	if (offer->get_salary() > salary && offer->get_needed_workers() > 0)
+	agent* offer = get_random<agent*>(probabilities);
+	if (offer->get_value("labor_market") > salary && offer->check())
 	{
 		if (employer != NULL)
 		{
 			employer->quit(this);
 		}
 		employer = offer;
-		salary = offer->get_salary();
+		salary = offer->get_value("labor_market");
 		offer->hire(this);
 	}
 	return employer;
 }
 
-firm* household::buy(string market_type, map<firm*, double> probabilities)
+agent* household::buy(string market_type, map<agent*, double> probabilities)
 {
 	if (market_type == "labor_market")
 		return find_work(probabilities);
@@ -49,13 +53,13 @@ firm* household::buy(string market_type, map<firm*, double> probabilities)
 		return buy(consumption_need, consumption, money, probabilities);
 }
 
-firm* household::buy(double &need, double &consumption, double &budget, map<firm*, double> probabilities)
+agent* household::buy(double &need, double &consumption, double &budget, map<agent*, double> probabilities)
 {
 	//if (budget == 0 || need = 0)
 	if (consumption == need)
 		return NULL;
-	firm* seller = get_random<firm*>(probabilities);
-	double quantity = seller->get_quantity();
+	agent* seller = get_random<agent*>(probabilities);
+	double quantity = seller->get_storage();
 	double price = seller->get_price();
 	if (need - consumption <= quantity)
 	{

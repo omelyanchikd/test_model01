@@ -33,14 +33,17 @@ public:
 	void activate(string market_type);
 	void decide(string market_type);
 
+	bool check(string market_type);
+	double get_value(string market_type);
+
 	void fire();
 	void hire(household* worker);
 	void quit(household* worker);
 
 	void set_vacancies();
-	
-	firm* buy(string market_type, map<firm*, double> probabilities);
-	firm* buy(double &factor, double &capacity, double &budget, double &investments, map<firm*, double> probabilities);
+
+	agent* buy(string market_type, map<agent*, double> probabilities);
+	agent* buy(double &factor, double &capacity, double &budget, double &investments, map<agent*, double> probabilities);
 
 	double pricing();
 	void produce();

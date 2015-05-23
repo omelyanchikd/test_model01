@@ -18,9 +18,9 @@ void good_director::produce(int workers, double labor_productivity, double raw_l
 	raw -= quantity/raw_productivity;
 }
 
-double good_director::pricing(int workers, double salary, double raw_investments, double capital_investments, double amortization, double elasticity, double production)
+double good_director::pricing(int workers, double salary, double raw_investments, double capital_investments, double amortization, double elasticity, double production, double price)
 {
-	return ((production > 0)?((workers * salary + amortization * capital_investments + raw_investments) / (production * (1 + 1/elasticity))):0);
+	return ((production > 0)?((workers * salary + amortization * capital_investments + raw_investments) / (production * (1 + 1/elasticity))):price);
 }
 
 double good_director::investments(double plan, int workers, double labor_productivity, double raw_labor_productivity, double capital_productivity)

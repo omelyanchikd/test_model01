@@ -9,23 +9,24 @@ using namespace std;
 class agent
 {
 public:
-	agent(void);
-	~agent(void);
-
-	virtual agent* buy(string market_type, map<agent*,double> probabilities) = 0;
-	virtual agent* find_work(map<agent*, double> probabilities) = 0;
 
 	virtual void activate(string market_type) = 0;
 	virtual void decide(string market_type) = 0;
+
+	virtual agent* buy(string market_type, map<agent*, double> probabilities) = 0;
 	
 	virtual string get_type() = 0;
 
-	virtual double get_quantity() = 0;
+	virtual bool check(string market_type) = 0;
+
+	virtual double get_value(string market_type) = 0;
+
+	virtual double get_storage() = 0;
 	virtual double get_price() = 0;
 
-	virtual double get_needed_workers() = 0;
-	virtual double get_salary() = 0;
+	virtual void sell(double amount) = 0;
 
+	virtual void quit(agent *worker);
 
 };
 

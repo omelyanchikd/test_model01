@@ -17,9 +17,9 @@ void raw_director::produce(int workers, double labor_productivity, double raw_la
 	capital -= amortization * capital;	
 }
 
-double raw_director::pricing(int workers, double salary, double raw_investments, double capital_investments, double amortization, double elasticity, double production)
+double raw_director::pricing(int workers, double salary, double raw_investments, double capital_investments, double amortization, double elasticity, double production, double price)
 {
-	return ((production > 0)?((workers * salary + amortization * capital_investments) / (production * (1 + 1/elasticity))):0);
+	return ((production > 0)?((workers * salary + amortization * capital_investments) / (production * (1 + 1/elasticity))):price);
 }
 
 double raw_director::investments(double plan, int workers, double labor_productivity, double raw_labor_productivity, double capital_productivity)

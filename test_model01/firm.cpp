@@ -52,6 +52,21 @@ void firm::decide(string market_type)
 
 }
 
+bool firm::check(string market_type)
+{
+	if (market_type != "labor_market")
+		return (storage > 0);
+	return (labor_capacity - workers.size() > 0);
+}
+
+double firm::get_value(string market_type)
+{
+	if (market_type != "labor_market")
+		return price;
+	else
+		return salary;
+}
+
 void firm::fire()
 {
 	while (workers.size() > labor_capacity)
@@ -95,7 +110,7 @@ void firm::sell(double quantity)
 	sold += quantity;
 }
 
-firm* firm::buy(string market_type, map<firm*, double> probabilities)
+agent* firm::buy(string market_type, map<agent*, double> probabilities)
 {
 	if (market_type == "raw_market")
 		return buy(raw, raw_capacity, raw_budget, raw_investments, probabilities);
@@ -103,12 +118,12 @@ firm* firm::buy(string market_type, map<firm*, double> probabilities)
 		return buy(capital, capital_capacity, capital_budget, capital_investments, probabilities);
 }
 
-firm* firm::buy(double &factor, double &capacity, double &budget, double &investments, map<firm*, double> probabilities)
+agent* firm::buy(double &factor, double &capacity, double &budget, double &investments, map<agent*, double> probabilities)
 {
 	if (factor == capacity || budget == 0)
 		return NULL;
-	firm* seller = get_random<firm*>(probabilities);
-	double quantity = seller->get_quantity();
+	agent* seller = get_random<agent*>(probabilities);
+	double quantity = seller->get_storage();
 	double price = seller->get_price();
 	double need = capacity - factor;
 	if (quantity >= need && budget >= need * price)
@@ -143,11 +158,12 @@ void firm::produce()
 
 double firm::pricing()
 {
-	return director->pricing(workers.size(), salary, raw_investments, capital_investments, amortization, elasticity, production);
+	return director->pricing(workers.size(), salary, raw_investments, capital_investments, amortization, elasticity, production, price);
 }
 
 void firm::learn()
 {
+//	profit = director->profit();
 	raw_investments = 0;
 	if (time < period)
 	{
