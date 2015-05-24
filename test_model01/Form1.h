@@ -80,7 +80,8 @@ namespace test_model01 {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-				 for (int i = 0; i < 10000; i++)
+				 srand(1);
+				 for (int i = 0; i < 100; i++)
 				 {
 					 Ukraine.step();
 				 }

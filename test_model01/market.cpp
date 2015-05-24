@@ -72,6 +72,7 @@ void market::match(string firm_type)
 	{
 		if (firm_buyers[i]->get_type() == firm_type)
 		{
+			firm_buyers[i]->decide(type);
 			while (!empty())
 			{	
 				firm *seller = firm_buyers[i]->buy(type, probabilities);

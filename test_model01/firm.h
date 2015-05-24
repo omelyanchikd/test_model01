@@ -14,6 +14,7 @@
 
 #include <string>
 #include <sstream>
+#include <fstream>
 
 using namespace std;
 
@@ -47,8 +48,10 @@ public:
 	void produce();
 	
 	void sell(double quantity);
-	
-	void get_sales();
+
+	void get_profits();
+
+	void write_log();
 
 	void learn();
 

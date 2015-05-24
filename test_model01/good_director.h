@@ -15,5 +15,7 @@ public:
 
 	void learn(double sales, double salary_coefficient, double raw_coefficient, double capital_coefficient, double &salary_budget, double &raw_budget, double &capital_budget);
 
+	double get_profits(int workers, double salary, double sales, double raw_investments, double capital_investments, double amortization);
+
 };
 

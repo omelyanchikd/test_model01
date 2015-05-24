@@ -6,13 +6,13 @@ world::world(void)
 {
 	firms.clear();
 	households.clear();
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 2; i++)
 		firms.push_back(new firm("raw_firm"));
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 2; i++)
 		firms.push_back(new firm("capital_firm"));
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 2; i++)
 		firms.push_back(new firm("good_firm"));
-	for (int i = 0; i < 300; i++)
+	for (int i = 0; i < 30; i++)
 		households.push_back(new household());
 	labor_market = new labormarket(firms, households);
 	raw_market = new market("raw_market", get_firms("raw_firm"), get_firms("capital_firm", "good_firm"));
@@ -33,7 +33,20 @@ void world::step()
 	raw_market->match("good_firm");
 	good_market->activate();
 	good_market->match();
+	get_profits();
+	write_log();
 	learn();
+}
+
+void world::get_profits()
+{
+	for (int i = 0; i < firms.size(); i++)
+		firms[i]->get_profits();
+}
+void world::write_log()
+{
+	for (int i = 0; i < firms.size(); i++)
+		firms[i]->write_log();
 }
 
 void world::learn()

@@ -33,6 +33,10 @@ private:
 	market *good_market;
 	market *capital_market;
 
+	void get_profits();
+
+	void write_log();
+
 	void learn();
 };
 

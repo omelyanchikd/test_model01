@@ -8,12 +8,19 @@ firm::firm(void)
 
 firm::firm(string firm_type)
 {
+	ofstream fout;
+	fout.open("log.csv", ios::out | ios::trunc);
+	fout<<"pointer"<<", "<<"type"<<", "<<"money"<<", "<<"price"<<", "<<"salary"<<", "<<"sales"<<", "<<"production"<<", "<<"storage"<<", "<<"workers"<<", "<<"labor_capacity"<<", "<<"plan"<<", "<<"capital_investments"<<", "<<"capital_capacity"<<", "<<"raw_investments"<<", "<<"raw_capacity"<<", "<<"profit"<<endl; 
+	fout.close();	
 	sales = 0;
+	sold = 0;
 	storage = 0;
 	capital = 0;
 	raw = 0;
 	capital_investments = 0;
 	raw_investments = 0;
+	raw_capacity = 0;
+	capital_capacity = 0;
 	price = 0;
 	production = 0;
 	workers.clear();
@@ -26,13 +33,13 @@ firm::firm(string firm_type)
 	if (type == "raw_firm")
 	{
 		director = new raw_director();
-		labor_productivity = 100;
-		raw_labor_productivity = 10;
-		capital_productivity = 500;
+		labor_productivity = 10;
+		raw_labor_productivity = 1;
+		capital_productivity = 20;
 		salary_budget = 1000;
 		capital_budget = 5000;
 		amortization = 0.1;
-		plan = 500;
+		plan = 50;
 		salary_coefficient = 0.5;
 		capital_coefficient = 0.3;
 	}
@@ -42,13 +49,13 @@ firm::firm(string firm_type)
 			director = new capital_director();
 			labor_productivity = 10;
 			raw_labor_productivity = 1;
-			capital_productivity = 20;
-			raw_productivity = 50;
+			capital_productivity = 30;
+			raw_productivity = 0.5;
 			salary_budget = 500;
-			raw_budget = 1000;
-			capital_budget = 5000;
+			raw_budget = 100;
+			capital_budget = 500;
 			amortization = 0.05;
-			plan = 50;
+			plan = 5;
 			salary_coefficient = 0.4;
 			capital_coefficient = 0.2;
 			raw_coefficient = 0.4;
@@ -59,12 +66,12 @@ firm::firm(string firm_type)
 			labor_productivity = 10;
 			raw_labor_productivity = 1;
 			capital_productivity = 20;
-			raw_productivity = 50;
+			raw_productivity = 1;
 			salary_budget = 500;
 			raw_budget = 1000; 
 			capital_budget = 5000;
 			amortization = 0.05;
-			plan = 50;
+			plan = 10;
 			salary_coefficient = 0.4;
 			capital_coefficient = 0.2;
 			raw_coefficient = 0.4;
@@ -89,7 +96,7 @@ void firm::decide(string market_type)
 {
 	if (market_type == "raw_market")
 	{
-		raw_capacity = min(labor_productivity * workers.size()/raw_productivity, capital_productivity * capital/raw_productivity);
+		raw_capacity = labor_productivity * workers.size()/raw_productivity; //capital_productivity * capital/raw_productivity);
 	}
 	else
 		if (market_type == "capital_market")
@@ -116,9 +123,11 @@ double firm::get_value(string market_type)
 
 void firm::fire()
 {
-	while (workers.size() > labor_capacity)
+	while (workers.size() > labor_capacity && workers.size())
 	{
-		workers[rand()/RAND_MAX * workers.size()]->fire();
+		int index = rand()/RAND_MAX * (workers.size() - 1);
+		workers[index]->fire();
+		workers.erase(workers.begin() + index);
 	}
 }
 
@@ -145,8 +154,10 @@ void firm::quit(household* worker)
 void firm::set_vacancies()
 {
 	labor_capacity = plan/labor_productivity;
+	if (labor_capacity < 1)
+		labor_capacity = 1;
 	salary = salary_budget/labor_capacity;
-	if (labor_capacity > workers.size())
+	if (labor_capacity < workers.size())
 		fire();
 }
 
@@ -154,7 +165,7 @@ void firm::sell(double quantity)
 {
 	storage -= quantity;
 	sales += quantity * price;
-	sold += quantity;
+	sold += quantity;	
 }
 
 firm* firm::buy(string market_type, map<firm*, double> probabilities)
@@ -167,7 +178,7 @@ firm* firm::buy(string market_type, map<firm*, double> probabilities)
 
 firm* firm::buy(double &factor, double &capacity, double &budget, double &investments, map<firm*, double> probabilities)
 {
-	if (factor == capacity || budget == 0)
+	if (factor >= capacity || budget == 0)
 		return NULL;
 	firm* seller = get_random<firm*>(probabilities);
 	double quantity = seller->get_storage();
@@ -208,22 +219,33 @@ double firm::pricing()
 	return director->pricing(workers.size(), salary, raw_investments, capital_investments, amortization, elasticity, production, price);
 }
 
-void firm::learn()
+void firm::get_profits()
 {
-//	profit = director->profit();
+	profit = director->get_profits(workers.size(), salary, sales, raw_investments, capital_investments, amortization);
+}
+
+void firm::write_log()
+{
+	ofstream fout;
+	fout.open("log.csv", ios_base::app);
+	fout<<this<<", "<<type<<", "<<money<<", "<<price<<", "<<salary<<", "<<sales<<", "<<production<<", "<<storage<<", "<<workers.size()<<", "<<labor_capacity<<", "<<plan<<", "<<capital_investments<<", "<<capital_capacity<<", "<<raw_investments<<", "<<raw_capacity<<", "<<profit<<endl; 
+	fout.close();
+}
+
+void firm::learn()
+{	
 	raw_investments = 0;
 	if (time < period)
 	{
 		history.push_back(sold);
-		sold = 0;
 	}
 	else
 	{
-		plan = aproximation * sold + 1/period * summarize(history);
+		plan = aproximation * sold + (1 - aproximation) * 1/period * summarize(history);
 		history.erase(history.begin());
 		history.push_back(sold);
-		sold = 0;
 	}
+	sold = 0;
 	director->learn(sales, salary_coefficient, raw_coefficient, capital_coefficient, salary_budget, raw_budget, capital_budget);
 	sales = 0;
 	time++;
