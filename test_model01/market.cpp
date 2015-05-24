@@ -6,11 +6,19 @@ market::market(void)
 {
 }
 
-market::market(string market_type, vector<agent*> _sellers, vector<agent*> _buyers)
+market::market(string market_type, vector<firm*> _sellers, vector<firm*> _buyers)
 {
 	type = market_type;
 	sellers = _sellers;
-	buyers = _buyers;
+	firm_buyers = _buyers;
+	probabilities.clear();
+}
+
+market::market(string market_type, vector<firm*> _sellers, vector<household*> _buyers)
+{
+	type = market_type;
+	sellers = _sellers;
+	household_buyers = _buyers;
 	probabilities.clear();
 }
 
@@ -23,45 +31,50 @@ void market::activate()
 		if (sellers[i]->check(type))
 				probabilities[sellers[i]] = sellers[i]->get_value(type);
 	}
-	if (type != "labor_market")
-		probabilities = allocate<agent*>(invert<agent*>(probabilities));
-	else
-		probabilities = allocate<agent*>(probabilities);
+	probabilities = allocate<firm*>(invert<firm*>(probabilities));
 }
 
 void market::match()
 {
-	for (int i = 0; i < buyers.size(); i++)
+	if (type == "good_market")
 	{
-		if (type != "labor_market")
+		for (int i = 0; i < household_buyers.size(); i++)
 		{
-			buyers[i]->decide(type);
+			household_buyers[i]->decide();
 			while (!empty())
 			{
-				agent *seller = buyers[i]->buy(type, probabilities);
+				firm *seller = household_buyers[i]->buy(probabilities);
 				if (seller == NULL)
 					break;
 				update(seller);
 			}		
 		}
-		else
+	}
+	else
+	{
+		for (int i = 0; i < firm_buyers.size(); i++)
 		{
-			agent *employer = buyers[i]->buy(type, probabilities);
-			if (employer != NULL)
-				update(employer);
-		};
+			firm_buyers[i]->decide(type);
+			while (!empty())
+			{
+				firm *seller = firm_buyers[i]->buy(type, probabilities);
+				if (seller == NULL)
+					break;
+				update(seller);
+			}		
+		}
 	}
 }
 
 void market::match(string firm_type)
 {
-	for (int i = 0; i < buyers.size(); i++)
+	for (int i = 0; i < firm_buyers.size(); i++)
 	{
-		if (buyers[i]->get_type() == firm_type)
+		if (firm_buyers[i]->get_type() == firm_type)
 		{
 			while (!empty())
 			{	
-				agent *seller = buyers[i]->buy(type, probabilities);
+				firm *seller = firm_buyers[i]->buy(type, probabilities);
 				if (seller == NULL)
 					break;
 				update(seller);
@@ -70,19 +83,19 @@ void market::match(string firm_type)
 	}
 }
 
-void market::update(agent *seller)
+void market::update(firm *seller)
 {
 	if (!(seller->check(type)))
 	{
 		probabilities.erase(seller);
-		probabilities = allocate<agent*>(probabilities);
+		probabilities = allocate<firm*>(probabilities);
 	}
 }
 
 
 bool market::empty()
 {
-	return (sellers.empty());
+	return (probabilities.empty());
 }
 
 string market::get_type()

@@ -88,7 +88,6 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="agent.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="capital_director.cpp" />
     <ClCompile Include="firm.cpp" />
@@ -96,6 +95,7 @@
     <ClCompile Include="generator.cpp" />
     <ClCompile Include="good_director.cpp" />
     <ClCompile Include="household.cpp" />
+    <ClCompile Include="labormarket.cpp" />
     <ClCompile Include="raw_director.cpp" />
     <ClCompile Include="market.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -106,7 +106,6 @@
     <ClCompile Include="world.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="agent.h" />
     <ClInclude Include="capital_director.h" />
     <ClInclude Include="firm.h" />
     <ClInclude Include="firm_director.h" />
@@ -116,6 +115,7 @@
     <ClInclude Include="generator.h" />
     <ClInclude Include="good_director.h" />
     <ClInclude Include="household.h" />
+    <ClInclude Include="labormarket.h" />
     <ClInclude Include="raw_director.h" />
     <ClInclude Include="market.h" />
     <ClInclude Include="resource.h" />

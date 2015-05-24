@@ -1,7 +1,5 @@
 #pragma once
 
-#include "agent.h"
-
 #include "household.h"
 #include "generator.h"
 
@@ -23,7 +21,7 @@ class household;
 
 //enum firm_type {raw_firm, capital_firm, good_firm};
 
-class firm: public agent
+class firm
 {
 public:
 	
@@ -42,8 +40,8 @@ public:
 
 	void set_vacancies();
 
-	agent* buy(string market_type, map<agent*, double> probabilities);
-	agent* buy(double &factor, double &capacity, double &budget, double &investments, map<agent*, double> probabilities);
+	firm* buy(string market_type, map<firm*, double> probabilities);
+	firm* buy(double &factor, double &capacity, double &budget, double &investments, map<firm*, double> probabilities);
 
 	double pricing();
 	void produce();

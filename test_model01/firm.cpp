@@ -8,19 +8,66 @@ firm::firm(void)
 
 firm::firm(string firm_type)
 {
+	sales = 0;
+	storage = 0;
+	capital = 0;
+	raw = 0;
+	capital_investments = 0;
+	raw_investments = 0;
+	price = 0;
+	production = 0;
+	workers.clear();
 	type = firm_type;
+	time = 0;
+	period = 3;
+	aproximation = 0.7;
+	money = 10000;
+	elasticity = -1.5;
 	if (type == "raw_firm")
 	{
 		director = new raw_director();
+		labor_productivity = 100;
+		raw_labor_productivity = 10;
+		capital_productivity = 500;
+		salary_budget = 1000;
+		capital_budget = 5000;
+		amortization = 0.1;
+		plan = 500;
+		salary_coefficient = 0.5;
+		capital_coefficient = 0.3;
 	}
 	else
 		if (type == "capital_firm")
 		{
 			director = new capital_director();
+			labor_productivity = 10;
+			raw_labor_productivity = 1;
+			capital_productivity = 20;
+			raw_productivity = 50;
+			salary_budget = 500;
+			raw_budget = 1000;
+			capital_budget = 5000;
+			amortization = 0.05;
+			plan = 50;
+			salary_coefficient = 0.4;
+			capital_coefficient = 0.2;
+			raw_coefficient = 0.4;
 		}
 		else
 		{
 			director = new good_director();
+			labor_productivity = 10;
+			raw_labor_productivity = 1;
+			capital_productivity = 20;
+			raw_productivity = 50;
+			salary_budget = 500;
+			raw_budget = 1000; 
+			capital_budget = 5000;
+			amortization = 0.05;
+			plan = 50;
+			salary_coefficient = 0.4;
+			capital_coefficient = 0.2;
+			raw_coefficient = 0.4;
 		}
 }
 
@@ -110,7 +157,7 @@ void firm::sell(double quantity)
 	sold += quantity;
 }
 
-agent* firm::buy(string market_type, map<agent*, double> probabilities)
+firm* firm::buy(string market_type, map<firm*, double> probabilities)
 {
 	if (market_type == "raw_market")
 		return buy(raw, raw_capacity, raw_budget, raw_investments, probabilities);
@@ -118,11 +165,11 @@ agent* firm::buy(string market_type, map<agent*, double> probabilities)
 		return buy(capital, capital_capacity, capital_budget, capital_investments, probabilities);
 }
 
-agent* firm::buy(double &factor, double &capacity, double &budget, double &investments, map<agent*, double> probabilities)
+firm* firm::buy(double &factor, double &capacity, double &budget, double &investments, map<firm*, double> probabilities)
 {
 	if (factor == capacity || budget == 0)
 		return NULL;
-	agent* seller = get_random<agent*>(probabilities);
+	firm* seller = get_random<firm*>(probabilities);
 	double quantity = seller->get_storage();
 	double price = seller->get_price();
 	double need = capacity - factor;
@@ -178,6 +225,7 @@ void firm::learn()
 		sold = 0;
 	}
 	director->learn(sales, salary_coefficient, raw_coefficient, capital_coefficient, salary_budget, raw_budget, capital_budget);
+	sales = 0;
 	time++;
 }
 

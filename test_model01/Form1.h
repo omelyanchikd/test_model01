@@ -1,5 +1,9 @@
 #pragma once
 
+#include "world.h"
+
+world Ukraine;
+
 namespace test_model01 {
 
 	using namespace System;
@@ -34,6 +38,8 @@ namespace test_model01 {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Button^  button1;
+	protected: 
 
 	private:
 		/// <summary>
@@ -48,13 +54,38 @@ namespace test_model01 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"Form1";
-			this->Padding = System::Windows::Forms::Padding(0);
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->SuspendLayout();
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(50, 57);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->TabIndex = 0;
+			this->button1->Text = L"button1";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+			// 
+			// Form1
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(284, 261);
+			this->Controls->Add(this->button1);
+			this->Name = L"Form1";
+			this->Text = L"Form1";
+			this->ResumeLayout(false);
+
 		}
 #pragma endregion
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+				 for (int i = 0; i < 10000; i++)
+				 {
+					 Ukraine.step();
+				 }
+				 button1->Text = L"finish";
+			 }
 	};
 }
 

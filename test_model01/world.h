@@ -6,6 +6,7 @@
 #include "household.h"
 
 #include "market.h"
+#include "labormarket.h"
 
 #include <vector>
 #include <map>
@@ -27,7 +28,7 @@ private:
 	vector<firm*> firms;
 	vector<household*> households;
 
-	market *labor_market;
+	labormarket *labor_market;
 	market *raw_market;
 	market *good_market;
 	market *capital_market;

@@ -14,7 +14,7 @@ world::world(void)
 		firms.push_back(new firm("good_firm"));
 	for (int i = 0; i < 300; i++)
 		households.push_back(new household());
-	labor_market = new market("labor_market", firms, households);
+	labor_market = new labormarket(firms, households);
 	raw_market = new market("raw_market", get_firms("raw_firm"), get_firms("capital_firm", "good_firm"));
 	capital_market = new market("capital_market", get_firms("capital_firm"), firms);
 	good_market = new market("good_market", get_firms("good_firm"), households);

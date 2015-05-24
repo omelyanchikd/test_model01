@@ -1,7 +1,5 @@
 #pragma once
 
-#include "agent.h"
-
 #include "firm.h"
 #include "household.h"
 
@@ -16,17 +14,15 @@ class market
 {
 public:
 	market(void);
-	market(string market_type, vector<agent*> _sellers, vector<agent*> _buyers);
+	market(string market_type, vector<firm*> _sellers, vector<firm*> _buyers);
+	market(string market_type, vector<firm*> _sellers, vector<household*> _buyers);
 
 	void activate();
 	void match();
 	void match(string firm_type);
 
-	void buy();
-	void sell();
-
 	bool empty();
-	void update(agent *seller);
+	void update(firm *seller);
 
 	string get_type();
 
@@ -34,10 +30,11 @@ private:
 
 	string type;
 
-	vector<agent*> sellers;
-	vector<agent*> buyers;
+	vector<firm*> sellers;
+	vector<firm*> firm_buyers;
+	vector<household*> household_buyers;
 
-	map<agent*, double> probabilities;
+	map<firm*, double> probabilities;
 
 	
 };

@@ -59,7 +59,7 @@
     <ClCompile Include="market.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="agent.cpp">
+    <ClCompile Include="labormarket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -100,7 +100,7 @@
     <ClInclude Include="market.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="agent.h">
+    <ClInclude Include="labormarket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
