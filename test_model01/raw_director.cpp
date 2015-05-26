@@ -28,7 +28,7 @@ double raw_director::pricing(int workers, double salary, double raw_investments,
 
 double raw_director::investments(double plan, int workers, double labor_productivity, double raw_labor_productivity, double capital_productivity, double capital_capacity)
 {
-	if (plan - raw_labor_productivity * workers > 0)
+	if (plan - raw_labor_productivity * workers > 0 && workers)
 		return (labor_productivity * (plan - raw_labor_productivity * workers))/(capital_productivity * (labor_productivity - raw_labor_productivity));
 	return capital_capacity;
 }

@@ -27,7 +27,7 @@ firm::firm(string firm_type)
 	type = firm_type;
 	time = 0;
 	period = 6;
-	aproximation = 0.7;
+	aproximation = 0.5;
 	money = 10000;
 	elasticity = -1.5;
 	if (type == "raw_firm")
@@ -38,7 +38,7 @@ firm::firm(string firm_type)
 		capital_productivity = 20;
 		salary_budget = 100;
 		capital_budget = 5;
-		amortization = 0.1;
+		amortization = 0.5;
 		plan = 50;
 		salary_coefficient = 0.5;
 		capital_coefficient = 0.3;
@@ -55,7 +55,7 @@ firm::firm(string firm_type)
 			salary_budget = 500;
 			raw_budget = 100;
 			capital_budget = 500;
-			amortization = 0.05;
+			amortization = 0.5;
 			plan = 5;
 			salary_coefficient = 0.4;
 			capital_coefficient = 0.2;
@@ -71,7 +71,7 @@ firm::firm(string firm_type)
 			salary_budget = 50;
 			raw_budget = 10; 
 			capital_budget = 5;
-			amortization = 0.05;
+			amortization = 0.5;
 			plan = 10;
 			salary_coefficient = 0.4;
 			capital_coefficient = 0.2;
@@ -158,9 +158,10 @@ void firm::quit(household* worker)
 void firm::set_vacancies()
 {
 	labor_capacity = plan/labor_productivity;
-	if (labor_capacity < 1)
-		labor_capacity = 1;
-	salary = salary_budget/labor_capacity;
+	if (labor_capacity)
+		salary = salary_budget/labor_capacity;
+	else
+		salary = 0;
 	if (labor_capacity < workers.size())
 		fire();
 }
@@ -248,6 +249,8 @@ void firm::write_log()
 
 void firm::learn()
 {	
+	if (time)
+	{
 	raw_investments = 0;
 	capital_investments -= amortization * capital_investments;
 	if (time < period)
@@ -268,6 +271,7 @@ void firm::learn()
 	director->learn(sales, salary_coefficient, raw_coefficient, capital_coefficient, salary_budget, raw_budget, capital_budget);
 	sales = 0;
 	time++;
+	}
 }
 
 string firm::parse(double a, double b)
@@ -277,6 +281,37 @@ string firm::parse(double a, double b)
 	buffer << " ";
 	buffer << b;
 	return buffer.str();
+}
+
+double firm::get(string parameter)
+{
+	if (parameter == "price")
+		return price;
+	if (parameter == "salary")
+		return salary;
+	if (parameter == "workers")
+		return workers.size();
+	if (parameter == "sales")
+		return sales;
+	if (parameter == "profit")
+		return profit;
+	if (parameter == "labor_capacity")
+		return labor_capacity;
+	if (parameter == "capital_investments")
+		return capital_investments;
+	if (parameter == "raw_investments")
+		return raw_investments;
+	if (parameter == "capital_capacity")
+		return capital_capacity;
+	if (parameter == "raw_capacity")
+		return raw_capacity;
+	if (parameter == "sold")
+		return sold;
+	if (parameter == "production")
+		return production;
+	if (parameter == "plan")
+		return plan;
+
 }
 
 string firm::get_type()

@@ -7,7 +7,7 @@ world::world(void)
 	tax = 0.2;
 	firms.clear();
 	households.clear();
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 5; i++)
 		firms.push_back(new firm("raw_firm"));
 	for (int i = 0; i < 2; i++)
 		firms.push_back(new firm("capital_firm"));
@@ -26,6 +26,8 @@ world::world(void)
 
 void world::step()
 {
+	learn("raw_firm");
+	learn("good_firm");
 	labor_market->activate();
 	labor_market->match();
 	capital_market->match("raw_firm");
@@ -45,8 +47,7 @@ void world::step()
 	write_log("raw_firm");
 	write_log("good_firm");
 //	taxation();
-	learn("raw_firm");
-	learn("good_firm");
+
 
 }
 

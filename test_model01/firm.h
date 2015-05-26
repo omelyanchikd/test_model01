@@ -59,6 +59,8 @@ public:
 
 	string get_type();
 
+	double get(string parameter);
+
 	double get_salary();
 	double get_needed_workers();
 	double get_price();
