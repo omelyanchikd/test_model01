@@ -85,11 +85,11 @@ namespace test_model01 {
 				 {
 					 Ukraine.step();
 				 }
-				 Ukraine.change_tax(0.1);
-				 for (int i = 0; i < 50; i++)
+//				 Ukraine.change_tax(0.1);
+/*				 for (int i = 0; i < 200; i++)
 				 {
 					 Ukraine.step();
-				 }
+				 }//*/
 				 button1->Text = L"finish";
 			 }
 	};

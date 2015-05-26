@@ -26,7 +26,7 @@ firm::firm(string firm_type)
 	workers.clear();
 	type = firm_type;
 	time = 0;
-	period = 3;
+	period = 6;
 	aproximation = 0.7;
 	money = 10000;
 	elasticity = -1.5;
@@ -97,7 +97,10 @@ void firm::decide(string market_type)
 {
 	if (market_type == "raw_market")
 	{
-		raw_capacity = labor_productivity * workers.size()/raw_productivity; //capital_productivity * capital/raw_productivity);
+		if (type == "good_firm" && capital || type == "capital_firm")
+			raw_capacity = labor_productivity * workers.size()/raw_productivity; //capital_productivity * capital/raw_productivity);
+		else
+			raw_capacity = 0;
 	}
 	else
 		if (market_type == "capital_market")
@@ -230,7 +233,7 @@ double firm::get_tax(double tax)
 	if (profit > 0)
 	{
 		sales -= tax * sales;
-		return tax * profit;
+		return tax * sales;
 	}
 	return 0;
 }
@@ -246,17 +249,22 @@ void firm::write_log()
 void firm::learn()
 {	
 	raw_investments = 0;
+	capital_investments -= amortization * capital_investments;
 	if (time < period)
 	{
 		history.push_back(sold);
 	}
 	else
 	{
-		plan = aproximation * sold + (1 - aproximation) * 1/period * summarize(history);
+		plan = 1.1 * (aproximation * sold + (1 - aproximation) * 1/period * summarize(history));
 		history.erase(history.begin());
 		history.push_back(sold);
 	}
 	sold = 0;
+	if (plan - storage > 0)
+		plan -= storage;
+	else
+		plan = 0;
 	director->learn(sales, salary_coefficient, raw_coefficient, capital_coefficient, salary_budget, raw_budget, capital_budget);
 	sales = 0;
 	time++;

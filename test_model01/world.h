@@ -39,11 +39,14 @@ private:
 	double total_taxes;
 
 	void get_profits();
+	void get_profits(string type);
 
 	void taxation();
-
+	
 	void write_log();
+	void write_log(string type);
 
 	void learn();
+	void learn(string type);
 };
 
