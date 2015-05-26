@@ -81,7 +81,12 @@ namespace test_model01 {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 				 srand(1);
-				 for (int i = 0; i < 100; i++)
+				 for (int i = 0; i < 50; i++)
+				 {
+					 Ukraine.step();
+				 }
+				 Ukraine.change_tax(0.1);
+				 for (int i = 0; i < 50; i++)
 				 {
 					 Ukraine.step();
 				 }

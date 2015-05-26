@@ -10,6 +10,7 @@
 
 #include <vector>
 #include <map>
+#include <fstream>
 
 using namespace std;
 
@@ -19,6 +20,7 @@ public:
 	world(void);
 
 	void step();
+	void change_tax(double new_tax);
 
 	vector<firm*> get_firms(string firm_type);
 	vector<firm*> get_firms(string firm_type1, string firm_type2);
@@ -33,7 +35,12 @@ private:
 	market *good_market;
 	market *capital_market;
 
+	double tax;
+	double total_taxes;
+
 	void get_profits();
+
+	void taxation();
 
 	void write_log();
 

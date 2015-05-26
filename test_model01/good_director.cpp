@@ -23,9 +23,11 @@ double good_director::pricing(int workers, double salary, double raw_investments
 	return (production > 0)?1.5 * (workers * salary + amortization * capital_investments + raw_investments) / production :price;
 }
 
-double good_director::investments(double plan, int workers, double labor_productivity, double raw_labor_productivity, double capital_productivity)
+double good_director::investments(double plan, int workers, double labor_productivity, double raw_labor_productivity, double capital_productivity, double capital_capacity)
 {
-	return (plan/capital_productivity > labor_productivity * workers/capital_productivity)? labor_productivity * workers/capital_productivity : plan/capital_productivity;
+	if (workers && plan)
+		return (plan/capital_productivity > labor_productivity * workers/capital_productivity)? labor_productivity * workers/capital_productivity : plan/capital_productivity;
+	return capital_capacity;
 }
 
 double good_director::get_profits(int workers, double salary, double sales, double raw_investments, double capital_investments, double amortization)

@@ -4,20 +4,24 @@
 
 world::world(void)
 {
+	tax = 0.2;
 	firms.clear();
 	households.clear();
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 4; i++)
 		firms.push_back(new firm("raw_firm"));
 	for (int i = 0; i < 2; i++)
 		firms.push_back(new firm("capital_firm"));
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 4; i++)
 		firms.push_back(new firm("good_firm"));
-	for (int i = 0; i < 30; i++)
+	for (int i = 0; i < 500; i++)
 		households.push_back(new household());
 	labor_market = new labormarket(firms, households);
 	raw_market = new market("raw_market", get_firms("raw_firm"), get_firms("capital_firm", "good_firm"));
 	capital_market = new market("capital_market", get_firms("capital_firm"), firms);
 	good_market = new market("good_market", get_firms("good_firm"), households);
+	ofstream fout;
+	fout.open("taxes.txt", ios::out | ios::trunc);	
+	fout.close();	
 }
 
 void world::step()
@@ -34,8 +38,25 @@ void world::step()
 	good_market->activate();
 	good_market->match();
 	get_profits();
+	taxation();
 	write_log();
 	learn();
+}
+
+void world::change_tax(double new_tax)
+{
+	tax = new_tax;
+}
+
+void world::taxation()
+{
+	total_taxes = 0;
+	for (int i = 0; i < firms.size(); i++)
+		total_taxes += firms[i]->get_tax(tax);
+	ofstream fout;
+	fout.open("taxes.txt", ios_base::app);
+	fout<<total_taxes<<endl;
+	fout.close();	
 }
 
 void world::get_profits()

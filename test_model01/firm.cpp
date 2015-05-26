@@ -36,8 +36,8 @@ firm::firm(string firm_type)
 		labor_productivity = 10;
 		raw_labor_productivity = 1;
 		capital_productivity = 20;
-		salary_budget = 1000;
-		capital_budget = 5000;
+		salary_budget = 100;
+		capital_budget = 5;
 		amortization = 0.1;
 		plan = 50;
 		salary_coefficient = 0.5;
@@ -47,6 +47,7 @@ firm::firm(string firm_type)
 		if (type == "capital_firm")
 		{
 			director = new capital_director();
+			period = 12;
 			labor_productivity = 10;
 			raw_labor_productivity = 1;
 			capital_productivity = 30;
@@ -67,9 +68,9 @@ firm::firm(string firm_type)
 			raw_labor_productivity = 1;
 			capital_productivity = 20;
 			raw_productivity = 1;
-			salary_budget = 500;
-			raw_budget = 1000; 
-			capital_budget = 5000;
+			salary_budget = 50;
+			raw_budget = 10; 
+			capital_budget = 5;
 			amortization = 0.05;
 			plan = 10;
 			salary_coefficient = 0.4;
@@ -101,7 +102,7 @@ void firm::decide(string market_type)
 	else
 		if (market_type == "capital_market")
 		{
-			capital_capacity = director->investments(plan, workers.size(), labor_productivity, raw_labor_productivity, capital_productivity);
+			capital_capacity = director->investments(plan, workers.size(), labor_productivity, raw_labor_productivity, capital_productivity, capital_capacity);
 		}
 
 }
@@ -222,6 +223,16 @@ double firm::pricing()
 void firm::get_profits()
 {
 	profit = director->get_profits(workers.size(), salary, sales, raw_investments, capital_investments, amortization);
+}
+
+double firm::get_tax(double tax)
+{
+	if (profit > 0)
+	{
+		sales -= tax * sales;
+		return tax * profit;
+	}
+	return 0;
 }
 
 void firm::write_log()

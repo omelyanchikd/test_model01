@@ -45,6 +45,8 @@ public:
 	firm* buy(double &factor, double &capacity, double &budget, double &investments, map<firm*, double> probabilities);
 
 	double pricing();
+	double get_tax(double tax);
+
 	void produce();
 	
 	void sell(double quantity);
