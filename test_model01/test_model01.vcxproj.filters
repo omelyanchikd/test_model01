@@ -62,6 +62,9 @@
     <ClCompile Include="labormarket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Result.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Form1.h">
@@ -101,6 +104,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="labormarket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Result.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

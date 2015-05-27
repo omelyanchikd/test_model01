@@ -48,7 +48,7 @@ firm::firm(string firm_type)
 		{
 			director = new capital_director();
 			period = 12;
-			labor_productivity = 10;
+			labor_productivity = 5;
 			raw_labor_productivity = 1;
 			capital_productivity = 30;
 			raw_productivity = 0.5;
@@ -56,7 +56,7 @@ firm::firm(string firm_type)
 			raw_budget = 100;
 			capital_budget = 500;
 			amortization = 0.5;
-			plan = 5;
+			plan = 10;
 			salary_coefficient = 0.4;
 			capital_coefficient = 0.2;
 			raw_coefficient = 0.4;
@@ -66,13 +66,13 @@ firm::firm(string firm_type)
 			director = new good_director();
 			labor_productivity = 10;
 			raw_labor_productivity = 1;
-			capital_productivity = 20;
+			capital_productivity = 2000;
 			raw_productivity = 1;
 			salary_budget = 50;
 			raw_budget = 10; 
 			capital_budget = 5;
 			amortization = 0.5;
-			plan = 10;
+			plan = 200;
 			salary_coefficient = 0.4;
 			capital_coefficient = 0.2;
 			raw_coefficient = 0.4;
@@ -251,7 +251,8 @@ void firm::learn()
 {	
 	if (time)
 	{
-	raw_investments = 0;
+		money += profit;
+		raw_investments = 0;
 	capital_investments -= amortization * capital_investments;
 	if (time < period)
 	{
@@ -259,7 +260,7 @@ void firm::learn()
 	}
 	else
 	{
-		plan = 1.1 * (aproximation * sold + (1 - aproximation) * 1/period * summarize(history));
+		plan = (aproximation * sold + (1 - aproximation) * 1/(period - 1) * summarize(history));
 		history.erase(history.begin());
 		history.push_back(sold);
 	}
@@ -270,8 +271,8 @@ void firm::learn()
 		plan = 0;
 	director->learn(sales, salary_coefficient, raw_coefficient, capital_coefficient, salary_budget, raw_budget, capital_budget);
 	sales = 0;
-	time++;
 	}
+	time++;
 }
 
 string firm::parse(double a, double b)
@@ -311,7 +312,8 @@ double firm::get(string parameter)
 		return production;
 	if (parameter == "plan")
 		return plan;
-
+	if (parameter == "money")
+		return money;
 }
 
 string firm::get_type()

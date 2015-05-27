@@ -99,6 +99,7 @@
     <ClCompile Include="labormarket.cpp" />
     <ClCompile Include="raw_director.cpp" />
     <ClCompile Include="market.cpp" />
+    <ClCompile Include="Result.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -120,6 +121,9 @@
     <ClInclude Include="raw_director.h" />
     <ClInclude Include="market.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Result.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="world.h" />
   </ItemGroup>
@@ -130,6 +134,9 @@
     <EmbeddedResource Include="Form1.resX">
       <DependentUpon>Form1.h</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Result.resx">
+      <DependentUpon>Result.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

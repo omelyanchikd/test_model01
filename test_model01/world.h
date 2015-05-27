@@ -22,6 +22,7 @@ public:
 	void step();
 	void change_tax(double new_tax);
 
+	vector<firm*> get_firms();
 	vector<firm*> get_firms(string firm_type);
 	vector<firm*> get_firms(string firm_type1, string firm_type2);
 
@@ -49,4 +50,6 @@ private:
 	void learn();
 	void learn(string type);
 };
+
+vector<firm*> append(vector<firm*> old, vector<firm*> neu);
 

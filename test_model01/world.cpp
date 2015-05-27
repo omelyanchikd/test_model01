@@ -11,7 +11,7 @@ world::world(void)
 		firms.push_back(new firm("raw_firm"));
 	for (int i = 0; i < 2; i++)
 		firms.push_back(new firm("capital_firm"));
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 3; i++)
 		firms.push_back(new firm("good_firm"));
 	for (int i = 0; i < 100; i++)
 		households.push_back(new household());
@@ -106,6 +106,11 @@ void world::learn(string type)
 		chosen[i]->learn();
 }
 
+vector<firm*> world::get_firms()
+{
+	return firms;
+}
+
 vector<firm*> world::get_firms(string firm_type)
 {
 	vector<firm*> result;
@@ -128,3 +133,9 @@ vector<firm*> world::get_firms(string firm_type1, string firm_type2)
 	return result;
 }
 
+vector<firm*> append(vector<firm*> old, vector<firm*> neu)
+{
+	for (int i = 0; i < neu.size(); i++)
+		old.push_back(neu[i]);
+	return old;
+}

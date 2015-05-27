@@ -1,9 +1,8 @@
 #pragma once
 
 #include "world.h"
+#include "Result.h"
 #include <msclr\marshal_cppstd.h>
-
-world Ukraine;
 
 namespace test_model01 {
 
@@ -41,7 +40,16 @@ namespace test_model01 {
 		}
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::CheckedListBox^  parameters;
-	private: System::Windows::Forms::DataVisualization::Charting::Chart^  chart;
+
+	private: System::Windows::Forms::Panel^  panel1;
+	private: System::Windows::Forms::Label^  label2;
+	private: System::Windows::Forms::CheckedListBox^  types;
+
+	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Panel^  panel2;
+	private: System::Windows::Forms::Label^  label4;
+	private: System::Windows::Forms::GroupBox^  groupBox1;
 
 
 	protected: 
@@ -59,19 +67,26 @@ namespace test_model01 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^  legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->parameters = (gcnew System::Windows::Forms::CheckedListBox());
-			this->chart = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->chart))->BeginInit();
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->types = (gcnew System::Windows::Forms::CheckedListBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->panel1->SuspendLayout();
+			this->panel2->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(564, 202);
+			this->button1->Dock = System::Windows::Forms::DockStyle::Bottom;
+			this->button1->Location = System::Drawing::Point(0, 360);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(120, 156);
+			this->button1->Size = System::Drawing::Size(141, 73);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Draw";
 			this->button1->UseVisualStyleBackColor = true;
@@ -79,59 +94,152 @@ namespace test_model01 {
 			// 
 			// parameters
 			// 
+			this->parameters->CheckOnClick = true;
+			this->parameters->Dock = System::Windows::Forms::DockStyle::Bottom;
 			this->parameters->FormattingEnabled = true;
-			this->parameters->Items->AddRange(gcnew cli::array< System::Object^  >(12) {L"price", L"salary", L"plan", L"workers", L"labor_capacity", 
-				L"capital_capacity", L"raw_capacity", L"capital_investments", L"raw_investments", L"sales", L"sold", L"profit"});
-			this->parameters->Location = System::Drawing::Point(564, 12);
+			this->parameters->Items->AddRange(gcnew cli::array< System::Object^  >(15) {L"price", L"salary", L"plan", L"storage", L"workers", 
+				L"labor_capacity", L"capital_capacity", L"raw_capacity", L"capital_investments", L"raw_investments", L"sales", L"sold", L"profit", 
+				L"money", L"production"});
+			this->parameters->Location = System::Drawing::Point(0, 131);
 			this->parameters->Name = L"parameters";
-			this->parameters->Size = System::Drawing::Size(120, 184);
+			this->parameters->Size = System::Drawing::Size(141, 229);
 			this->parameters->TabIndex = 1;
 			this->parameters->TabStop = false;
 			// 
-			// chart
+			// panel1
 			// 
-			chartArea1->Name = L"ChartArea1";
-			this->chart->ChartAreas->Add(chartArea1);
-			legend1->Name = L"Legend1";
-			this->chart->Legends->Add(legend1);
-			this->chart->Location = System::Drawing::Point(12, 12);
-			this->chart->Name = L"chart";
-			this->chart->Size = System::Drawing::Size(546, 346);
-			this->chart->TabIndex = 2;
-			this->chart->Text = L"chart1";
+			this->panel1->Controls->Add(this->label3);
+			this->panel1->Controls->Add(this->label2);
+			this->panel1->Controls->Add(this->types);
+			this->panel1->Controls->Add(this->label1);
+			this->panel1->Controls->Add(this->parameters);
+			this->panel1->Controls->Add(this->button1);
+			this->panel1->Dock = System::Windows::Forms::DockStyle::Right;
+			this->panel1->Location = System::Drawing::Point(700, 0);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(141, 433);
+			this->panel1->TabIndex = 3;
+			// 
+			// label3
+			// 
+			this->label3->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(204)));
+			this->label3->Location = System::Drawing::Point(45, 0);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(57, 17);
+			this->label3->TabIndex = 5;
+			this->label3->Text = L"Output";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Dock = System::Windows::Forms::DockStyle::Bottom;
+			this->label2->Location = System::Drawing::Point(0, 26);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(54, 13);
+			this->label2->TabIndex = 4;
+			this->label2->Text = L"Firm types";
+			// 
+			// types
+			// 
+			this->types->CheckOnClick = true;
+			this->types->Dock = System::Windows::Forms::DockStyle::Bottom;
+			this->types->FormattingEnabled = true;
+			this->types->Items->AddRange(gcnew cli::array< System::Object^  >(3) {L"raw_firm", L"capital_firm", L"good_firm"});
+			this->types->Location = System::Drawing::Point(0, 39);
+			this->types->Name = L"types";
+			this->types->Size = System::Drawing::Size(141, 79);
+			this->types->TabIndex = 3;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Dock = System::Windows::Forms::DockStyle::Bottom;
+			this->label1->Location = System::Drawing::Point(0, 118);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(60, 13);
+			this->label1->TabIndex = 2;
+			this->label1->Text = L"Parameters";
+			// 
+			// panel2
+			// 
+			this->panel2->Controls->Add(this->groupBox1);
+			this->panel2->Controls->Add(this->label4);
+			this->panel2->Location = System::Drawing::Point(596, 0);
+			this->panel2->Name = L"panel2";
+			this->panel2->Size = System::Drawing::Size(106, 433);
+			this->panel2->TabIndex = 4;
+			// 
+			// groupBox1
+			// 
+			this->groupBox1->Location = System::Drawing::Point(4, 26);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(99, 105);
+			this->groupBox1->TabIndex = 7;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"groupBox1";
+			// 
+			// label4
+			// 
+			this->label4->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(204)));
+			this->label4->Location = System::Drawing::Point(21, 0);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(44, 17);
+			this->label4->TabIndex = 6;
+			this->label4->Text = L"Input";
 			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(686, 370);
-			this->Controls->Add(this->chart);
-			this->Controls->Add(this->parameters);
-			this->Controls->Add(this->button1);
+			this->ClientSize = System::Drawing::Size(841, 433);
+			this->Controls->Add(this->panel2);
+			this->Controls->Add(this->panel1);
 			this->Name = L"Form1";
 			this->Text = L"Main";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->chart))->EndInit();
+			this->panel1->ResumeLayout(false);
+			this->panel1->PerformLayout();
+			this->panel2->ResumeLayout(false);
+			this->panel2->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 				 srand(1);
-				 vector<firm*> values = Ukraine.get_firms("good_firm");
+				 Result^ result = gcnew Result();				 
+				 world *country = new world();
+				 vector<firm*> values;
+				 for (int i = 0; i < types->CheckedItems->Count; i++)
+				 {
+					 string value = msclr::interop::marshal_as<std::string>(types->CheckedItems[i]->ToString());
+					 values = append(values, country->get_firms(value));
+				 }
 				 for (int i = 0; i < parameters->CheckedItems->Count; i++)
 				 {
-					 chart->Series->Add(parameters->CheckedItems[i]->ToString());
-					chart->Series[parameters->CheckedItems[i]->ToString()]->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+					for (int j = 0; j < values.size(); j++)
+					{						
+						
+						String^ s = gcnew String((values[j]->get_type()).c_str());
+						result->chart->Series->Add(parameters->CheckedItems[i]->ToString() + " " + s + " " + j);
+						result->chart->Series[parameters->CheckedItems[i]->ToString() + " " + s + " " + j]->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+					}
 				 }
-				 for (int l = 0; l< 50; l++)
+				 for (int l = 0; l < 50; l++)
 				 {
-					 Ukraine.step();
+					 country->step();
 					 for (int i = 0; i < parameters->CheckedItems->Count; i++)
 					 {
 						 for (int j = 0; j < values.size(); j++)
 						 {
+							 String^ s = gcnew String((values[j]->get_type()).c_str());
 							 string value = msclr::interop::marshal_as<std::string>(parameters->CheckedItems[i]->ToString());
-							 chart->Series[parameters->CheckedItems[i]->ToString()]->Points->AddY(values[j]->get(value));
+							 result->chart->Series[parameters->CheckedItems[i]->ToString() + " " + s + " " + j]->Points->AddY(values[j]->get(value));
 						 }
 					 }
 				 }
@@ -140,6 +248,7 @@ namespace test_model01 {
 				 {
 					 Ukraine.step();
 				 }//*/
+				 result->Visible = true;
 				 button1->Text = L"finish";
 			 }
 	};
