@@ -11,7 +11,7 @@ world::world(void)
 		firms.push_back(new firm("raw_firm"));
 	for (int i = 0; i < 2; i++)
 		firms.push_back(new firm("capital_firm"));
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 1; i++)
 		firms.push_back(new firm("good_firm"));
 	for (int i = 0; i < 100; i++)
 		households.push_back(new household());

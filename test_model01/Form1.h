@@ -1,6 +1,7 @@
 #pragma once
 
 #include "world.h"
+#include <msclr\marshal_cppstd.h>
 
 world Ukraine;
 
@@ -40,8 +41,9 @@ namespace test_model01 {
 		}
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::CheckedListBox^  parameters;
+	private: System::Windows::Forms::DataVisualization::Charting::Chart^  chart;
 
-	private: System::Windows::Forms::DataVisualization::Charting::Chart^  chart1;
+
 	protected: 
 
 	private:
@@ -61,8 +63,8 @@ namespace test_model01 {
 			System::Windows::Forms::DataVisualization::Charting::Legend^  legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->parameters = (gcnew System::Windows::Forms::CheckedListBox());
-			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->chart1))->BeginInit();
+			this->chart = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->chart))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// button1
@@ -86,39 +88,52 @@ namespace test_model01 {
 			this->parameters->TabIndex = 1;
 			this->parameters->TabStop = false;
 			// 
-			// chart1
+			// chart
 			// 
 			chartArea1->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea1);
+			this->chart->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
-			this->chart1->Legends->Add(legend1);
-			this->chart1->Location = System::Drawing::Point(12, 12);
-			this->chart1->Name = L"chart1";
-			this->chart1->Size = System::Drawing::Size(546, 346);
-			this->chart1->TabIndex = 2;
-			this->chart1->Text = L"chart1";
+			this->chart->Legends->Add(legend1);
+			this->chart->Location = System::Drawing::Point(12, 12);
+			this->chart->Name = L"chart";
+			this->chart->Size = System::Drawing::Size(546, 346);
+			this->chart->TabIndex = 2;
+			this->chart->Text = L"chart1";
 			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(686, 370);
-			this->Controls->Add(this->chart1);
+			this->Controls->Add(this->chart);
 			this->Controls->Add(this->parameters);
 			this->Controls->Add(this->button1);
 			this->Name = L"Form1";
 			this->Text = L"Main";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->chart1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->chart))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 				 srand(1);
-				 if (parameters->
-				 for (int i = 0; i < 500; i++)
+				 vector<firm*> values = Ukraine.get_firms("good_firm");
+				 for (int i = 0; i < parameters->CheckedItems->Count; i++)
+				 {
+					 chart->Series->Add(parameters->CheckedItems[i]->ToString());
+					chart->Series[parameters->CheckedItems[i]->ToString()]->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+				 }
+				 for (int l = 0; l< 50; l++)
 				 {
 					 Ukraine.step();
+					 for (int i = 0; i < parameters->CheckedItems->Count; i++)
+					 {
+						 for (int j = 0; j < values.size(); j++)
+						 {
+							 string value = msclr::interop::marshal_as<std::string>(parameters->CheckedItems[i]->ToString());
+							 chart->Series[parameters->CheckedItems[i]->ToString()]->Points->AddY(values[j]->get(value));
+						 }
+					 }
 				 }
 //				 Ukraine.change_tax(0.1);
 /*				 for (int i = 0; i < 200; i++)
