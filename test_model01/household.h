@@ -14,6 +14,7 @@ class household
 {
 public:
 	household(void);
+	household(double _money);
 
 	void fire();
 

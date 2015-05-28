@@ -1,0 +1,46 @@
+﻿Build started 28.05.2015 2:31:51.
+     1>Project "D:\multiagent projects\test_model01\test_model01\test_model01.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\test_model01.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       ClCompile:
+         All outputs are up-to-date.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr:pure /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\test_model01.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.DataVisualization.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt test_model01.cpp /clr:nostdlib 
+         test_model01.cpp
+     1>d:\multiagent projects\test_model01\test_model01\Form1.h(1157): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\multiagent projects\test_model01\test_model01\Form1.h(1170): warning C4018: '<' : signed/unsigned mismatch
+         All outputs are up-to-date.
+       CoreResGen:
+         "C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\NETFX 4.0 Tools\resgen.exe" /useSourcePath /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.DataVisualization.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /compile Form1.resX,Release\test_model01.Form1.resources
+         Processing resource file "Form1.resX" into "Release\test_model01.Form1.resources".
+       ResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\multiagent projects\test_model01\Release\test_model01.exe" /INCREMENTAL:NO /NOLOGO /ASSEMBLYRESOURCE:Release\test_model01.Form1.resources /ASSEMBLYRESOURCE:Release\test_model01.Result.resources /MANIFEST /ManifestFile:"Release\test_model01.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\multiagent projects\test_model01\Release\test_model01.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Release\app.res
+         Release\AssemblyInfo.obj
+         Release\capital_director.obj
+         Release\firm.obj
+         Release\firm_director.obj
+         Release\generator.obj
+         Release\good_director.obj
+         Release\household.obj
+         Release\labormarket.obj
+         Release\raw_director.obj
+         Release\market.obj
+         Release\Result.obj
+         Release\stdafx.obj
+         Release\test_model01.obj
+         Release\world.obj
+         "Release\.NETFramework,Version=v4.0.AssemblyAttributes.obj"
+         test_model01.vcxproj -> D:\multiagent projects\test_model01\Release\test_model01.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\multiagent projects\test_model01\Release\test_model01.exe;#1" /manifest Release\test_model01.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Release\test_model01.unsuccessfulbuild".
+         Touching "Release\test_model01.lastbuildstate".
+     1>Done Building Project "D:\multiagent projects\test_model01\test_model01\test_model01.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:06.87

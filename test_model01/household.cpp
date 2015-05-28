@@ -8,6 +8,14 @@ household::household(void)
 	employed = false;
 	employer = NULL;
 	salary = 0;
+}
+
+household::household(double _money)
+{
+	money = _money;
+	employed = false;
+	employer = NULL;
+	salary = 0;
 
 }
 
@@ -25,7 +33,7 @@ void household::decide()
 	else
 		consumption_budget = money;//*/
 	consumption_budget = 0.8 * salary;
-	consumption_budget = 20;
+	//consumption_budget = 20;
 	consumption = 0;
 	consumption_need = 2;
 }

@@ -150,6 +150,8 @@ private: System::Windows::Forms::Button^  button1;
 private: System::Windows::Forms::Label^  label39;
 private: System::Windows::Forms::Label^  label40;
 private: System::Windows::Forms::TextBox^  firm_id;
+private: System::Windows::Forms::Label^  label41;
+private: System::Windows::Forms::TextBox^  iterations;
 
 
 
@@ -254,6 +256,8 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->label39 = (gcnew System::Windows::Forms::Label());
 			this->label40 = (gcnew System::Windows::Forms::Label());
 			this->firm_id = (gcnew System::Windows::Forms::TextBox());
+			this->label41 = (gcnew System::Windows::Forms::Label());
+			this->iterations = (gcnew System::Windows::Forms::TextBox());
 			this->input->SuspendLayout();
 			this->raw_firm_tab->SuspendLayout();
 			this->capital_firm_tab->SuspendLayout();
@@ -280,7 +284,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(204)));
-			this->label3->Location = System::Drawing::Point(637, 0);
+			this->label3->Location = System::Drawing::Point(619, 0);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(57, 17);
 			this->label3->TabIndex = 5;
@@ -323,7 +327,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->input->Location = System::Drawing::Point(2, 0);
 			this->input->Name = L"input";
 			this->input->SelectedIndex = 0;
-			this->input->Size = System::Drawing::Size(475, 392);
+			this->input->Size = System::Drawing::Size(469, 353);
 			this->input->TabIndex = 4;
 			// 
 			// raw_firm_tab
@@ -352,7 +356,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->raw_firm_tab->Location = System::Drawing::Point(4, 22);
 			this->raw_firm_tab->Name = L"raw_firm_tab";
 			this->raw_firm_tab->Padding = System::Windows::Forms::Padding(3);
-			this->raw_firm_tab->Size = System::Drawing::Size(691, 366);
+			this->raw_firm_tab->Size = System::Drawing::Size(461, 327);
 			this->raw_firm_tab->TabIndex = 0;
 			this->raw_firm_tab->Text = L"raw_firm";
 			// 
@@ -371,6 +375,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->period_raw->Name = L"period_raw";
 			this->period_raw->Size = System::Drawing::Size(143, 20);
 			this->period_raw->TabIndex = 20;
+			this->period_raw->Text = L"3";
 			// 
 			// label13
 			// 
@@ -387,6 +392,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->aproximation_raw->Name = L"aproximation_raw";
 			this->aproximation_raw->Size = System::Drawing::Size(143, 20);
 			this->aproximation_raw->TabIndex = 18;
+			this->aproximation_raw->Text = L"0,3";
 			// 
 			// label12
 			// 
@@ -403,6 +409,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->capital_coefficient_raw->Name = L"capital_coefficient_raw";
 			this->capital_coefficient_raw->Size = System::Drawing::Size(143, 20);
 			this->capital_coefficient_raw->TabIndex = 16;
+			this->capital_coefficient_raw->Text = L"0,4";
 			// 
 			// label11
 			// 
@@ -419,6 +426,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->salary_coefficient_raw->Name = L"salary_coefficient_raw";
 			this->salary_coefficient_raw->Size = System::Drawing::Size(143, 20);
 			this->salary_coefficient_raw->TabIndex = 14;
+			this->salary_coefficient_raw->Text = L"0,4";
 			// 
 			// label9
 			// 
@@ -435,6 +443,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->amortization_raw->Name = L"amortization_raw";
 			this->amortization_raw->Size = System::Drawing::Size(143, 20);
 			this->amortization_raw->TabIndex = 10;
+			this->amortization_raw->Text = L"0,1";
 			// 
 			// label8
 			// 
@@ -451,6 +460,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->capital_productivity_raw->Name = L"capital_productivity_raw";
 			this->capital_productivity_raw->Size = System::Drawing::Size(143, 20);
 			this->capital_productivity_raw->TabIndex = 8;
+			this->capital_productivity_raw->Text = L"10";
 			// 
 			// label7
 			// 
@@ -467,6 +477,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->raw_labor_productivity_raw->Name = L"raw_labor_productivity_raw";
 			this->raw_labor_productivity_raw->Size = System::Drawing::Size(143, 20);
 			this->raw_labor_productivity_raw->TabIndex = 6;
+			this->raw_labor_productivity_raw->Text = L"1";
 			// 
 			// label6
 			// 
@@ -483,6 +494,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->labor_productivity_raw->Name = L"labor_productivity_raw";
 			this->labor_productivity_raw->Size = System::Drawing::Size(143, 20);
 			this->labor_productivity_raw->TabIndex = 4;
+			this->labor_productivity_raw->Text = L"5";
 			// 
 			// label5
 			// 
@@ -497,10 +509,11 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			// money_raw
 			// 
 			this->money_raw->Anchor = System::Windows::Forms::AnchorStyles::Left;
-			this->money_raw->Location = System::Drawing::Point(52, 61);
+			this->money_raw->Location = System::Drawing::Point(53, 64);
 			this->money_raw->Name = L"money_raw";
 			this->money_raw->Size = System::Drawing::Size(143, 20);
 			this->money_raw->TabIndex = 2;
+			this->money_raw->Text = L"1000";
 			// 
 			// label4
 			// 
@@ -513,10 +526,11 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			// 
 			// number_raw
 			// 
-			this->number_raw->Location = System::Drawing::Point(52, 17);
+			this->number_raw->Location = System::Drawing::Point(57, 22);
 			this->number_raw->Name = L"number_raw";
 			this->number_raw->Size = System::Drawing::Size(143, 20);
 			this->number_raw->TabIndex = 0;
+			this->number_raw->Text = L"1";
 			// 
 			// capital_firm_tab
 			// 
@@ -548,7 +562,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->capital_firm_tab->Location = System::Drawing::Point(4, 22);
 			this->capital_firm_tab->Name = L"capital_firm_tab";
 			this->capital_firm_tab->Padding = System::Windows::Forms::Padding(3);
-			this->capital_firm_tab->Size = System::Drawing::Size(467, 366);
+			this->capital_firm_tab->Size = System::Drawing::Size(461, 327);
 			this->capital_firm_tab->TabIndex = 1;
 			this->capital_firm_tab->Text = L"capital_firm";
 			// 
@@ -567,6 +581,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->raw_coefficient_capital->Name = L"raw_coefficient_capital";
 			this->raw_coefficient_capital->Size = System::Drawing::Size(143, 20);
 			this->raw_coefficient_capital->TabIndex = 44;
+			this->raw_coefficient_capital->Text = L"0,3";
 			// 
 			// label10
 			// 
@@ -583,6 +598,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->period_capital->Name = L"period_capital";
 			this->period_capital->Size = System::Drawing::Size(143, 20);
 			this->period_capital->TabIndex = 42;
+			this->period_capital->Text = L"12";
 			// 
 			// label15
 			// 
@@ -599,6 +615,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->aproximation_capital->Name = L"aproximation_capital";
 			this->aproximation_capital->Size = System::Drawing::Size(143, 20);
 			this->aproximation_capital->TabIndex = 40;
+			this->aproximation_capital->Text = L"0,1";
 			// 
 			// label16
 			// 
@@ -615,6 +632,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->capital_coefficient_capital->Name = L"capital_coefficient_capital";
 			this->capital_coefficient_capital->Size = System::Drawing::Size(143, 20);
 			this->capital_coefficient_capital->TabIndex = 38;
+			this->capital_coefficient_capital->Text = L"0,2";
 			// 
 			// label17
 			// 
@@ -631,11 +649,12 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->salary_coefficient_capital->Name = L"salary_coefficient_capital";
 			this->salary_coefficient_capital->Size = System::Drawing::Size(143, 20);
 			this->salary_coefficient_capital->TabIndex = 36;
+			this->salary_coefficient_capital->Text = L"0,4";
 			// 
 			// label18
 			// 
 			this->label18->AutoSize = true;
-			this->label18->Location = System::Drawing::Point(6, 287);
+			this->label18->Location = System::Drawing::Point(235, 239);
 			this->label18->Name = L"label18";
 			this->label18->Size = System::Drawing::Size(86, 13);
 			this->label18->TabIndex = 35;
@@ -643,10 +662,11 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			// 
 			// raw_productivity_capital
 			// 
-			this->raw_productivity_capital->Location = System::Drawing::Point(52, 303);
+			this->raw_productivity_capital->Location = System::Drawing::Point(281, 255);
 			this->raw_productivity_capital->Name = L"raw_productivity_capital";
 			this->raw_productivity_capital->Size = System::Drawing::Size(143, 20);
 			this->raw_productivity_capital->TabIndex = 34;
+			this->raw_productivity_capital->Text = L"3";
 			// 
 			// label19
 			// 
@@ -663,6 +683,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->amortization_capital->Name = L"amortization_capital";
 			this->amortization_capital->Size = System::Drawing::Size(143, 20);
 			this->amortization_capital->TabIndex = 32;
+			this->amortization_capital->Text = L"0,2";
 			// 
 			// label20
 			// 
@@ -679,6 +700,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->capital_productivity_capital->Name = L"capital_productivity_capital";
 			this->capital_productivity_capital->Size = System::Drawing::Size(143, 20);
 			this->capital_productivity_capital->TabIndex = 30;
+			this->capital_productivity_capital->Text = L"5";
 			// 
 			// label21
 			// 
@@ -695,6 +717,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->raw_labor_productivity_capital->Name = L"raw_labor_productivity_capital";
 			this->raw_labor_productivity_capital->Size = System::Drawing::Size(143, 20);
 			this->raw_labor_productivity_capital->TabIndex = 28;
+			this->raw_labor_productivity_capital->Text = L"0,5";
 			// 
 			// label22
 			// 
@@ -711,12 +734,13 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->labor_productivity_capital->Name = L"labor_productivity_capital";
 			this->labor_productivity_capital->Size = System::Drawing::Size(143, 20);
 			this->labor_productivity_capital->TabIndex = 26;
+			this->labor_productivity_capital->Text = L"3";
 			// 
 			// label23
 			// 
 			this->label23->Anchor = System::Windows::Forms::AnchorStyles::Left;
 			this->label23->AutoSize = true;
-			this->label23->Location = System::Drawing::Point(6, 46);
+			this->label23->Location = System::Drawing::Point(7, 46);
 			this->label23->Name = L"label23";
 			this->label23->Size = System::Drawing::Size(39, 13);
 			this->label23->TabIndex = 25;
@@ -725,10 +749,11 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			// money_capital
 			// 
 			this->money_capital->Anchor = System::Windows::Forms::AnchorStyles::Left;
-			this->money_capital->Location = System::Drawing::Point(51, 59);
+			this->money_capital->Location = System::Drawing::Point(52, 62);
 			this->money_capital->Name = L"money_capital";
 			this->money_capital->Size = System::Drawing::Size(143, 20);
 			this->money_capital->TabIndex = 24;
+			this->money_capital->Text = L"1000";
 			// 
 			// label24
 			// 
@@ -741,10 +766,11 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			// 
 			// number_capital
 			// 
-			this->number_capital->Location = System::Drawing::Point(51, 15);
+			this->number_capital->Location = System::Drawing::Point(52, 20);
 			this->number_capital->Name = L"number_capital";
 			this->number_capital->Size = System::Drawing::Size(143, 20);
 			this->number_capital->TabIndex = 22;
+			this->number_capital->Text = L"1";
 			// 
 			// good_firm_tab
 			// 
@@ -773,7 +799,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->good_firm_tab->Controls->Add(this->number_good);
 			this->good_firm_tab->Location = System::Drawing::Point(4, 22);
 			this->good_firm_tab->Name = L"good_firm_tab";
-			this->good_firm_tab->Size = System::Drawing::Size(467, 366);
+			this->good_firm_tab->Size = System::Drawing::Size(461, 327);
 			this->good_firm_tab->TabIndex = 2;
 			this->good_firm_tab->Text = L"good_firm";
 			// 
@@ -792,6 +818,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->raw_coefficient_good->Name = L"raw_coefficient_good";
 			this->raw_coefficient_good->Size = System::Drawing::Size(143, 20);
 			this->raw_coefficient_good->TabIndex = 68;
+			this->raw_coefficient_good->Text = L"0,3";
 			// 
 			// label27
 			// 
@@ -804,10 +831,11 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			// 
 			// period_good
 			// 
-			this->period_good->Location = System::Drawing::Point(281, 208);
+			this->period_good->Location = System::Drawing::Point(281, 207);
 			this->period_good->Name = L"period_good";
 			this->period_good->Size = System::Drawing::Size(143, 20);
 			this->period_good->TabIndex = 66;
+			this->period_good->Text = L"3";
 			// 
 			// label28
 			// 
@@ -824,6 +852,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->aproximation_good->Name = L"aproximation_good";
 			this->aproximation_good->Size = System::Drawing::Size(143, 20);
 			this->aproximation_good->TabIndex = 64;
+			this->aproximation_good->Text = L"0,5";
 			// 
 			// label29
 			// 
@@ -840,6 +869,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->capital_coefficient_good->Name = L"capital_coefficient_good";
 			this->capital_coefficient_good->Size = System::Drawing::Size(143, 20);
 			this->capital_coefficient_good->TabIndex = 62;
+			this->capital_coefficient_good->Text = L"0,2";
 			// 
 			// label30
 			// 
@@ -856,6 +886,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->salary_coefficient_good->Name = L"salary_coefficient_good";
 			this->salary_coefficient_good->Size = System::Drawing::Size(143, 20);
 			this->salary_coefficient_good->TabIndex = 60;
+			this->salary_coefficient_good->Text = L"0,4";
 			// 
 			// label32
 			// 
@@ -872,6 +903,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->amortization_good->Name = L"amortization_good";
 			this->amortization_good->Size = System::Drawing::Size(143, 20);
 			this->amortization_good->TabIndex = 56;
+			this->amortization_good->Text = L"0,1";
 			// 
 			// label33
 			// 
@@ -888,6 +920,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->capital_productivity_good->Name = L"capital_productivity_good";
 			this->capital_productivity_good->Size = System::Drawing::Size(143, 20);
 			this->capital_productivity_good->TabIndex = 54;
+			this->capital_productivity_good->Text = L"20";
 			// 
 			// label34
 			// 
@@ -904,6 +937,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->raw_productivity_good->Name = L"raw_productivity_good";
 			this->raw_productivity_good->Size = System::Drawing::Size(143, 20);
 			this->raw_productivity_good->TabIndex = 52;
+			this->raw_productivity_good->Text = L"5";
 			// 
 			// label35
 			// 
@@ -920,6 +954,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->labor_productivity_good->Name = L"labor_productivity_good";
 			this->labor_productivity_good->Size = System::Drawing::Size(143, 20);
 			this->labor_productivity_good->TabIndex = 50;
+			this->labor_productivity_good->Text = L"5";
 			// 
 			// label36
 			// 
@@ -934,11 +969,11 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			// money_good
 			// 
 			this->money_good->Anchor = System::Windows::Forms::AnchorStyles::Left;
-			this->money_good->Location = System::Drawing::Point(51, 59);
+			this->money_good->Location = System::Drawing::Point(52, 62);
 			this->money_good->Name = L"money_good";
 			this->money_good->Size = System::Drawing::Size(143, 20);
 			this->money_good->TabIndex = 48;
-			this->money_good->TextChanged += gcnew System::EventHandler(this, &Form1::textBox11_TextChanged);
+			this->money_good->Text = L"1000";
 			// 
 			// label37
 			// 
@@ -951,10 +986,11 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			// 
 			// number_good
 			// 
-			this->number_good->Location = System::Drawing::Point(51, 15);
+			this->number_good->Location = System::Drawing::Point(52, 20);
 			this->number_good->Name = L"number_good";
 			this->number_good->Size = System::Drawing::Size(143, 20);
 			this->number_good->TabIndex = 46;
+			this->number_good->Text = L"1";
 			// 
 			// household_tab
 			// 
@@ -965,7 +1001,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->household_tab->Controls->Add(this->number_household);
 			this->household_tab->Location = System::Drawing::Point(4, 22);
 			this->household_tab->Name = L"household_tab";
-			this->household_tab->Size = System::Drawing::Size(691, 366);
+			this->household_tab->Size = System::Drawing::Size(461, 327);
 			this->household_tab->TabIndex = 3;
 			this->household_tab->Text = L"household";
 			// 
@@ -973,7 +1009,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			// 
 			this->label31->Anchor = System::Windows::Forms::AnchorStyles::Left;
 			this->label31->AutoSize = true;
-			this->label31->Location = System::Drawing::Point(6, 46);
+			this->label31->Location = System::Drawing::Point(3, 39);
 			this->label31->Name = L"label31";
 			this->label31->Size = System::Drawing::Size(39, 13);
 			this->label31->TabIndex = 53;
@@ -982,10 +1018,11 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			// money_household
 			// 
 			this->money_household->Anchor = System::Windows::Forms::AnchorStyles::Left;
-			this->money_household->Location = System::Drawing::Point(51, 59);
+			this->money_household->Location = System::Drawing::Point(51, 57);
 			this->money_household->Name = L"money_household";
 			this->money_household->Size = System::Drawing::Size(143, 20);
 			this->money_household->TabIndex = 52;
+			this->money_household->Text = L"1000";
 			// 
 			// label38
 			// 
@@ -1002,12 +1039,13 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->number_household->Name = L"number_household";
 			this->number_household->Size = System::Drawing::Size(143, 20);
 			this->number_household->TabIndex = 50;
+			this->number_household->Text = L"200";
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(499, 319);
+			this->button1->Location = System::Drawing::Point(499, 285);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(330, 73);
+			this->button1->Size = System::Drawing::Size(300, 68);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Draw";
 			this->button1->UseVisualStyleBackColor = true;
@@ -1019,7 +1057,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			this->label39->AutoSize = true;
 			this->label39->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(204)));
-			this->label39->Location = System::Drawing::Point(546, 132);
+			this->label39->Location = System::Drawing::Point(552, 118);
 			this->label39->Name = L"label39";
 			this->label39->Size = System::Drawing::Size(31, 17);
 			this->label39->TabIndex = 6;
@@ -1028,7 +1066,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			// label40
 			// 
 			this->label40->AutoSize = true;
-			this->label40->Location = System::Drawing::Point(505, 165);
+			this->label40->Location = System::Drawing::Point(505, 141);
 			this->label40->Name = L"label40";
 			this->label40->Size = System::Drawing::Size(37, 13);
 			this->label40->TabIndex = 25;
@@ -1036,16 +1074,37 @@ private: System::Windows::Forms::TextBox^  firm_id;
 			// 
 			// firm_id
 			// 
-			this->firm_id->Location = System::Drawing::Point(508, 192);
+			this->firm_id->Location = System::Drawing::Point(508, 164);
 			this->firm_id->Name = L"firm_id";
 			this->firm_id->Size = System::Drawing::Size(116, 20);
 			this->firm_id->TabIndex = 24;
+			// 
+			// label41
+			// 
+			this->label41->AutoSize = true;
+			this->label41->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(204)));
+			this->label41->Location = System::Drawing::Point(531, 208);
+			this->label41->Name = L"label41";
+			this->label41->Size = System::Drawing::Size(76, 17);
+			this->label41->TabIndex = 27;
+			this->label41->Text = L"Iterations";
+			// 
+			// iterations
+			// 
+			this->iterations->Location = System::Drawing::Point(534, 231);
+			this->iterations->Name = L"iterations";
+			this->iterations->Size = System::Drawing::Size(75, 20);
+			this->iterations->TabIndex = 26;
+			this->iterations->Text = L"100";
 			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(841, 394);
+			this->ClientSize = System::Drawing::Size(805, 358);
+			this->Controls->Add(this->label41);
+			this->Controls->Add(this->iterations);
 			this->Controls->Add(this->label40);
 			this->Controls->Add(this->firm_id);
 			this->Controls->Add(this->label39);
@@ -1075,12 +1134,23 @@ private: System::Windows::Forms::TextBox^  firm_id;
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 				 srand(1);
 				 Result^ result = gcnew Result();				 
-				 world *country = new world();
+				 world *country = new world(int::Parse(number_raw->Text), int::Parse(number_capital->Text), int::Parse(number_good->Text), int::Parse(number_household->Text), double::Parse(money_household->Text));
+				 country->init("raw_firm", double::Parse(money_raw->Text), double::Parse(labor_productivity_raw->Text), double::Parse(raw_labor_productivity_raw->Text), double::Parse(capital_productivity_raw->Text), double::Parse(amortization_raw->Text), 0, double::Parse(salary_coefficient_raw->Text), 0, double::Parse(capital_coefficient_raw->Text), double::Parse(aproximation_raw->Text), double::Parse(period_raw->Text));
+				 country->init("capital_firm", double::Parse(money_capital->Text), double::Parse(labor_productivity_capital->Text), double::Parse(raw_labor_productivity_capital->Text), double::Parse(capital_productivity_capital->Text), double::Parse(amortization_capital->Text), double::Parse(raw_productivity_capital->Text), double::Parse(salary_coefficient_capital->Text), double::Parse(raw_coefficient_capital->Text), double::Parse(capital_coefficient_capital->Text), double::Parse(aproximation_capital->Text), double::Parse(period_capital->Text));
+				 country->init("good_firm", double::Parse(money_good->Text), double::Parse(labor_productivity_good->Text), 0, double::Parse(capital_productivity_good->Text), double::Parse(amortization_good->Text), double::Parse(raw_productivity_good->Text), double::Parse(salary_coefficient_good->Text), double::Parse(raw_coefficient_good->Text), double::Parse(capital_coefficient_good->Text), double::Parse(aproximation_good->Text), double::Parse(period_good->Text));
 				 vector<firm*> values;
+				 if (!(String::IsNullOrWhiteSpace(firm_id->Text)))
+				 {
+					 values.push_back(country->get_firms()[int::Parse(firm_id->Text) % country->get_firms().size()]);
+				 }
+				 else
+				 {
+				 
 				 for (int i = 0; i < types->CheckedItems->Count; i++)
 				 {
 					 string value = msclr::interop::marshal_as<std::string>(types->CheckedItems[i]->ToString());
 					 values = append(values, country->get_firms(value));
+				 }
 				 }
 				 for (int i = 0; i < parameters->CheckedItems->Count; i++)
 				 {
@@ -1092,7 +1162,7 @@ private: System::Windows::Forms::TextBox^  firm_id;
 						result->chart->Series[parameters->CheckedItems[i]->ToString() + " " + s + " " + j]->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
 					}
 				 }
-				 for (int l = 0; l < 50; l++)
+				 for (int l = 0; l < int::Parse(iterations->Text); l++)
 				 {
 					 country->step();
 					 for (int i = 0; i < parameters->CheckedItems->Count; i++)
@@ -1111,11 +1181,8 @@ private: System::Windows::Forms::TextBox^  firm_id;
 					 Ukraine.step();
 				 }//*/
 				 result->Show();
-				 button1->Text = L"finish";
 			 }
 
-private: System::Void textBox11_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-		 }
 };
 }
 

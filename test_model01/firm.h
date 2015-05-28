@@ -29,6 +29,9 @@ public:
 	firm(void);
 	firm(string firm_type);
 
+	void init(double _money, double _labor_productivity, double _raw_labor_productivity, double 
+	_capital_productivity, double _amortization, double _raw_productivity, double _salary_coefficient, double _raw_coefficient, double _capital_coefficient, double _aproximation, double _period, double _salary_budget, double _raw_budget, double _capital_budget, double _plan);
+
 	void activate(string market_type);
 	void decide(string market_type);
 

@@ -79,6 +79,40 @@ firm::firm(string firm_type)
 		}
 }
 
+void firm::init(double _money, double _labor_productivity, double _raw_labor_productivity, double 
+	_capital_productivity, double _amortization, double _raw_productivity, double _salary_coefficient, double _raw_coefficient, double _capital_coefficient, double _aproximation, double _period, double _salary_budget, double _raw_budget, double _capital_budget, double _plan)
+{
+	sales = 0;
+	sold = 0;
+	storage = 0;
+	capital = 0;
+	raw = 0;
+	capital_investments = 0;
+	raw_investments = 0;
+	raw_capacity = 0;
+	capital_capacity = 0;
+	price = 0;
+	production = 0;
+	workers.clear();
+	time = 0;
+	period = _period;
+	aproximation = _aproximation;
+	money = _money;
+	elasticity = -1.5;
+	labor_productivity = _labor_productivity;
+	raw_labor_productivity = _raw_labor_productivity;
+	capital_productivity = _capital_productivity;
+	raw_productivity = _raw_productivity;	
+	salary_budget = _salary_budget;
+	raw_budget = _raw_budget; 
+	capital_budget = _capital_budget;
+	amortization = _amortization;
+	plan = _plan;
+	salary_coefficient = _salary_coefficient;
+	capital_coefficient = _capital_coefficient;
+	raw_coefficient = _raw_coefficient;	
+}
+
 void firm::activate(string market_type)
 {
 	if (market_type == "labor_market")
@@ -157,7 +191,7 @@ void firm::quit(household* worker)
 
 void firm::set_vacancies()
 {
-	labor_capacity = plan/labor_productivity;
+	labor_capacity = ceil(plan/labor_productivity);
 	if (labor_capacity)
 		salary = salary_budget/labor_capacity;
 	else
@@ -254,13 +288,13 @@ void firm::learn()
 		money += profit;
 		raw_investments = 0;
 	capital_investments -= amortization * capital_investments;
-	if (time < period)
+	if (time < period + 1)
 	{
 		history.push_back(sold);
 	}
 	else
 	{
-		plan = (aproximation * sold + (1 - aproximation) * 1/(period - 1) * summarize(history));
+		plan = (aproximation * sold + (1 - aproximation) * summarize(history)/period);
 		history.erase(history.begin());
 		history.push_back(sold);
 	}

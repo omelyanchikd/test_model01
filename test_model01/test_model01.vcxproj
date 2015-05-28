@@ -51,6 +51,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -116,7 +117,9 @@
     </ClInclude>
     <ClInclude Include="generator.h" />
     <ClInclude Include="good_director.h" />
-    <ClInclude Include="household.h" />
+    <ClInclude Include="household.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="labormarket.h" />
     <ClInclude Include="raw_director.h" />
     <ClInclude Include="market.h" />

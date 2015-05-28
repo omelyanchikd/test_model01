@@ -18,9 +18,12 @@ class world
 {
 public:
 	world(void);
+	world(int number_raw, int number_capital, int number_good, int number_household, double money_household);
 
 	void step();
 	void change_tax(double new_tax);
+
+	void init(string type, double money, double labor_productivity, double raw_labor_productivity, double capital_productivity, double amortization, double raw_productivity, double salary_coefficient, double raw_coefficient, double capital_coefficient, double aproximation, double period); 
 
 	vector<firm*> get_firms();
 	vector<firm*> get_firms(string firm_type);

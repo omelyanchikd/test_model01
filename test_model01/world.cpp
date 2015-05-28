@@ -24,6 +24,41 @@ world::world(void)
 	fout.close();	
 }
 
+world::world(int number_raw, int number_capital, int number_good, int number_household, double money_household)
+{
+	tax = 0.2;
+	firms.clear();
+	households.clear();
+	for (int i = 0; i < number_raw; i++)
+		firms.push_back(new firm("raw_firm"));
+	for (int i = 0; i < number_capital; i++)
+		firms.push_back(new firm("capital_firm"));
+	for (int i = 0; i < number_good; i++)
+		firms.push_back(new firm("good_firm"));
+	for (int i = 0; i < number_household; i++)
+		households.push_back(new household(money_household));
+	labor_market = new labormarket(firms, households);
+	raw_market = new market("raw_market", get_firms("raw_firm"), get_firms("capital_firm", "good_firm"));
+	capital_market = new market("capital_market", get_firms("capital_firm"), firms);
+	good_market = new market("good_market", get_firms("good_firm"), households);
+	ofstream fout;
+	fout.open("taxes.txt", ios::out | ios::trunc);	
+	fout.close();	
+}
+
+void world::init(string type, double money, double labor_productivity, double raw_labor_productivity, double 
+	capital_productivity, double amortization, double raw_productivity, double salary_coefficient, double raw_coefficient, double capital_coefficient, double aproximation, double period)
+{
+	for (int i = 0; i < firms.size(); i++)
+	{
+		if (firms[i]->get_type() == type)
+		{
+			firms[i]->init(money, labor_productivity, raw_labor_productivity, capital_productivity, amortization, raw_productivity, salary_coefficient, raw_coefficient, capital_coefficient, aproximation, period, 0.2 * salary_coefficient * money, 0.2 * raw_coefficient * money, 0.2 * capital_coefficient * money, 10);
+		}
+	}
+}
+
+
 void world::step()
 {
 	learn("raw_firm");
