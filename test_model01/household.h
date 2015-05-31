@@ -23,7 +23,7 @@ public:
 	firm* find_work(map<firm*, double> probabilities);
 
 	firm* buy(map<firm*, double> probabilities);
-	firm* buy(double &need, double &consumption, double &budget, map<firm*, double> probabilities);
+	firm* buy(double &capacity, double &consumption, double &budget, map<firm*, double> probabilities);
 
 
 private:
@@ -37,6 +37,6 @@ private:
 
 	double consumption_budget;
 	double consumption;
-	double consumption_need;
+	double consumption_capacity;
 };
 
