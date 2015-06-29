@@ -10,7 +10,7 @@ firm::firm(string firm_type)
 {
 	ofstream fout;
 	fout.open("log.csv", ios::out | ios::trunc);
-	fout<<"pointer"<<", "<<"type"<<", "<<"money"<<", "<<"price"<<", "<<"salary"<<", "<<"sales"<<", "<<"production"<<", "<<"storage"<<", "<<"workers"<<", "<<"labor_capacity"<<", "<<"plan"<<", "<<"capital_investments"<<", "<<"capital_capacity"<<", "<<"raw_investments"<<", "<<"raw_capacity"<<", "<<"profit"<<endl; 
+	fout<<"pointer"<<", "<<"type"<<", "<<"money"<<", "<<"price"<<", "<<"salary"<<", "<<"sales"<<", "<<"production"<<", "<<"storage"<<", "<<"workers"<<", "<<"labor_capacity"<<", "<<"plan"<<", "<<"capital_investments"<<", "<<"capital_capacity"<<", "<<"raw_investments"<<", "<<"raw_capacity"<<", "<<"profit"<<", "<<"time"<<endl; 
 	fout.close();	
 	sales = 0;
 	sold = 0;
@@ -250,6 +250,10 @@ firm* firm::buy(double &factor, double &capacity, double &budget, double &invest
 
 void firm::produce()
 {
+/*	ofstream fout;
+	fout.open("log.csv", ios_base::app);
+	fout<<raw<<", "<<capital<<", ";
+	fout.close();//*/
 	director->produce(workers.size(), labor_productivity, raw_labor_productivity, raw, raw_productivity, capital, capital_productivity, amortization, production);
 }
 
@@ -277,7 +281,7 @@ void firm::write_log()
 {
 	ofstream fout;
 	fout.open("log.csv", ios_base::app);
-	fout<<this<<", "<<type<<", "<<money<<", "<<price<<", "<<salary<<", "<<sales<<", "<<production<<", "<<storage<<", "<<workers.size()<<", "<<labor_capacity<<", "<<plan<<", "<<capital_investments<<", "<<capital_capacity<<", "<<raw_investments<<", "<<raw_capacity<<", "<<profit<<endl; 
+	fout<<this<<", "<<type<<", "<<money<<", "<<price<<", "<<salary<<", "<<sales<<", "<<production<<", "<<storage<<", "<<workers.size()<<", "<<labor_capacity<<", "<<plan<<", "<<capital_investments<<", "<<capital_capacity<<", "<<raw_investments<<", "<<raw_capacity<<", "<<profit<<", "<<time<<endl; 
 	fout.close();
 }
 
@@ -299,14 +303,22 @@ void firm::learn()
 		history.push_back(sold);
 	}
 	sold = 0;
-	if (plan - storage > 0)
-		plan -= storage;
-	else
-		plan = 0;
 	director->learn(sales, salary_coefficient, raw_coefficient, capital_coefficient, salary_budget, raw_budget, capital_budget);
 	sales = 0;
 	}
 	time++;
+	if (storage)
+		plan *= 0.5;
+	else
+		plan *= 1.5;
+	if (plan - storage > 0)
+	{
+		plan -= storage;
+	}
+	else
+	{
+		plan = 0;
+	}
 }
 
 string firm::parse(double a, double b)
