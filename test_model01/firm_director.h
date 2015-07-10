@@ -5,16 +5,16 @@ public:
 	firm_director(void);
 	~firm_director(void);
 
-	virtual void produce(int workers, double labor_productivity, double raw_labor_productivity, double &raw, double raw_productivity, double &capital, double capital_productivity, double amortization, double &quantity) = 0;
+	virtual void produce(int workers, float labor_productivity, float raw_labor_productivity, float &raw, float raw_productivity, float &capital, float capital_productivity, float amortization, float &quantity) = 0;
 	
-	virtual double pricing(int workers, double salary, double raw_investments, double capital_investments, double amortization, double elasticity, double production, double price) = 0;
+	virtual float pricing(int workers, float salary, float raw_investments, float capital_investments, float amortization, float elasticity, float production, float price) = 0;
 
-	virtual void learn(double sales, double salary_coefficient, double raw_coefficient, double capital_coefficient, double &salary_budget, double &raw_budget, double &capital_budget) = 0;
+	virtual void learn(float sales, float salary_coefficient, float raw_coefficient, float capital_coefficient, float &salary_budget, float &raw_budget, float &capital_budget) = 0;
 
-	virtual double investments(double plan, int workers, double labor_productivity, double raw_labor_productivity, double capital_productivity, double capital_capacity) = 0;
+	virtual float investments(float plan, int workers, float labor_productivity, float raw_labor_productivity, float capital_productivity, float capital_capacity) = 0;
 
-	virtual double get_profits(int workers, double salary, double sales, double raw_investments, double capital_investments, double amortization) = 0;
+	virtual float get_profits(int workers, float salary, float sales, float raw_investments, float capital_investments, float amortization) = 0;
 	
-	double min(double a, double b, double c);
+	float min(float a, float b, float c);
 };
 

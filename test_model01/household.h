@@ -14,29 +14,29 @@ class household
 {
 public:
 	household(void);
-	household(double _money);
+	household(float _money);
 
 	void fire();
 
 	void decide();
 
-	firm* find_work(map<firm*, double> probabilities);
+	firm* find_work(map<firm*, float> probabilities);
 
-	firm* buy(map<firm*, double> probabilities);
-	firm* buy(double &capacity, double &consumption, double &budget, map<firm*, double> probabilities);
+	firm* buy(map<firm*, float> probabilities);
+	firm* buy(float &capacity, float &consumption, float &budget, map<firm*, float> probabilities);
 
 
 private:
 	
-	double money;
+	float money;
 
 	firm *employer;
-	double salary;
+	float salary;
 
 	bool employed;
 
-	double consumption_budget;
-	double consumption;
-	double consumption_capacity;
+	float consumption_budget;
+	float consumption;
+	float consumption_capacity;
 };
 

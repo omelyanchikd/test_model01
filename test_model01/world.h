@@ -18,12 +18,12 @@ class world
 {
 public:
 	world(void);
-	world(int number_raw, int number_capital, int number_good, int number_household, double money_household);
+	world(int number_raw, int number_capital, int number_good, int number_household, float money_household);
 
 	void step();
-	void change_tax(double new_tax);
+	void change_tax(float new_tax);
 
-	void init(string type, double money, double labor_productivity, double raw_labor_productivity, double capital_productivity, double amortization, double raw_productivity, double salary_coefficient, double raw_coefficient, double capital_coefficient, double aproximation, double period); 
+	void init(string type, float money, float labor_productivity, float raw_labor_productivity, float capital_productivity, float amortization, float raw_productivity, float salary_coefficient, float raw_coefficient, float capital_coefficient, float aproximation, float period); 
 
 	vector<firm*> get_firms();
 	vector<firm*> get_firms(string firm_type);
@@ -39,8 +39,8 @@ private:
 	market *good_market;
 	market *capital_market;
 
-	double tax;
-	double total_taxes;
+	float tax;
+	float total_taxes;
 
 	void get_profits();
 	void get_profits(string type);

@@ -954,7 +954,7 @@ private: System::Windows::Forms::TextBox^  iterations;
 			this->labor_productivity_good->Name = L"labor_productivity_good";
 			this->labor_productivity_good->Size = System::Drawing::Size(143, 20);
 			this->labor_productivity_good->TabIndex = 50;
-			this->labor_productivity_good->Text = L"5";
+			this->labor_productivity_good->Text = L"10";
 			// 
 			// label36
 			// 
@@ -1134,10 +1134,10 @@ private: System::Windows::Forms::TextBox^  iterations;
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 				 srand(1);
 				 Result^ result = gcnew Result();				 
-				 world *country = new world(int::Parse(number_raw->Text), int::Parse(number_capital->Text), int::Parse(number_good->Text), int::Parse(number_household->Text), double::Parse(money_household->Text));
-				 country->init("raw_firm", double::Parse(money_raw->Text), double::Parse(labor_productivity_raw->Text), double::Parse(raw_labor_productivity_raw->Text), double::Parse(capital_productivity_raw->Text), double::Parse(amortization_raw->Text), 0, double::Parse(salary_coefficient_raw->Text), 0, double::Parse(capital_coefficient_raw->Text), double::Parse(aproximation_raw->Text), double::Parse(period_raw->Text));
-				 country->init("capital_firm", double::Parse(money_capital->Text), double::Parse(labor_productivity_capital->Text), double::Parse(raw_labor_productivity_capital->Text), double::Parse(capital_productivity_capital->Text), double::Parse(amortization_capital->Text), double::Parse(raw_productivity_capital->Text), double::Parse(salary_coefficient_capital->Text), double::Parse(raw_coefficient_capital->Text), double::Parse(capital_coefficient_capital->Text), double::Parse(aproximation_capital->Text), double::Parse(period_capital->Text));
-				 country->init("good_firm", double::Parse(money_good->Text), double::Parse(labor_productivity_good->Text), 0, double::Parse(capital_productivity_good->Text), double::Parse(amortization_good->Text), double::Parse(raw_productivity_good->Text), double::Parse(salary_coefficient_good->Text), double::Parse(raw_coefficient_good->Text), double::Parse(capital_coefficient_good->Text), double::Parse(aproximation_good->Text), double::Parse(period_good->Text));
+				 world *country = new world(int::Parse(number_raw->Text), int::Parse(number_capital->Text), int::Parse(number_good->Text), int::Parse(number_household->Text), float::Parse(money_household->Text));
+				 country->init("raw_firm", float::Parse(money_raw->Text), float::Parse(labor_productivity_raw->Text), float::Parse(raw_labor_productivity_raw->Text), float::Parse(capital_productivity_raw->Text), float::Parse(amortization_raw->Text), 0, float::Parse(salary_coefficient_raw->Text), 0, float::Parse(capital_coefficient_raw->Text), float::Parse(aproximation_raw->Text), float::Parse(period_raw->Text));
+				 country->init("capital_firm", float::Parse(money_capital->Text), float::Parse(labor_productivity_capital->Text), float::Parse(raw_labor_productivity_capital->Text), float::Parse(capital_productivity_capital->Text), float::Parse(amortization_capital->Text), float::Parse(raw_productivity_capital->Text), float::Parse(salary_coefficient_capital->Text), float::Parse(raw_coefficient_capital->Text), float::Parse(capital_coefficient_capital->Text), float::Parse(aproximation_capital->Text), float::Parse(period_capital->Text));
+				 country->init("good_firm", float::Parse(money_good->Text), float::Parse(labor_productivity_good->Text), 0, float::Parse(capital_productivity_good->Text), float::Parse(amortization_good->Text), float::Parse(raw_productivity_good->Text), float::Parse(salary_coefficient_good->Text), float::Parse(raw_coefficient_good->Text), float::Parse(capital_coefficient_good->Text), float::Parse(aproximation_good->Text), float::Parse(period_good->Text));
 				 vector<firm*> values;
 				 if (!(String::IsNullOrWhiteSpace(firm_id->Text)))
 				 {

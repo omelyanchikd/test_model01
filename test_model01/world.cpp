@@ -24,7 +24,7 @@ world::world(void)
 	fout.close();	
 }
 
-world::world(int number_raw, int number_capital, int number_good, int number_household, double money_household)
+world::world(int number_raw, int number_capital, int number_good, int number_household, float money_household)
 {
 	tax = 0.2;
 	firms.clear();
@@ -46,14 +46,14 @@ world::world(int number_raw, int number_capital, int number_good, int number_hou
 	fout.close();	
 }
 
-void world::init(string type, double money, double labor_productivity, double raw_labor_productivity, double 
-	capital_productivity, double amortization, double raw_productivity, double salary_coefficient, double raw_coefficient, double capital_coefficient, double aproximation, double period)
+void world::init(string type, float money, float labor_productivity, float raw_labor_productivity, float 
+	capital_productivity, float amortization, float raw_productivity, float salary_coefficient, float raw_coefficient, float capital_coefficient, float aproximation, float period)
 {
 	for (int i = 0; i < firms.size(); i++)
 	{
 		if (firms[i]->get_type() == type)
 		{
-			firms[i]->init(money, labor_productivity, raw_labor_productivity, capital_productivity, amortization, raw_productivity, salary_coefficient, raw_coefficient, capital_coefficient, aproximation, period, 0.2 * salary_coefficient * money, 0.2 * raw_coefficient * money, 0.2 * capital_coefficient * money, 10);
+			firms[i]->init(money, labor_productivity, raw_labor_productivity, capital_productivity, amortization, raw_productivity, salary_coefficient, raw_coefficient, capital_coefficient, aproximation, period, 0.2 * salary_coefficient * money, 0.2 * raw_coefficient * money, 0.2 * capital_coefficient * money);
 		}
 	}
 }
@@ -86,7 +86,7 @@ void world::step()
 
 }
 
-void world::change_tax(double new_tax)
+void world::change_tax(float new_tax)
 {
 	tax = new_tax;
 }

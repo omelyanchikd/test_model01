@@ -7,14 +7,14 @@ public:
 	raw_director(void);
 	~raw_director(void);
 
-	void produce(int workers, double labor_productivity, double raw_labor_productivity, double &raw, double raw_productivity, double &capital, double capital_productivity, double amortization, double &quantity);
+	void produce(int workers, float labor_productivity, float raw_labor_productivity, float &raw, float raw_productivity, float &capital, float capital_productivity, float amortization, float &quantity);
 
-	double pricing(int workers, double salary, double raw_investments, double capital_investments, double amortization, double elasticity, double production, double price);
+	float pricing(int workers, float salary, float raw_investments, float capital_investments, float amortization, float elasticity, float production, float price);
 
-	double investments(double plan, int workers, double labor_productivity, double raw_labor_productivity, double capital_productivity, double capital_capacity);
+	float investments(float plan, int workers, float labor_productivity, float raw_labor_productivity, float capital_productivity, float capital_capacity);
 
-    void learn(double sales, double salary_coefficient, double raw_coefficient, double capital_coefficient, double &salary_budget, double &raw_budget, double &capital_budget);
+    void learn(float sales, float salary_coefficient, float raw_coefficient, float capital_coefficient, float &salary_budget, float &raw_budget, float &capital_budget);
 
-	double get_profits(int workers, double salary, double sales, double raw_investments, double capital_investments, double amortization);
+	float get_profits(int workers, float salary, float sales, float raw_investments, float capital_investments, float amortization);
 };
 

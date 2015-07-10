@@ -1,4 +1,4 @@
-﻿Build started 01.06.2015 15:25:37.
+﻿Build started 10.07.2015 15:10:28.
      1>Project "D:\multiagent projects\test_model01\test_model01\test_model01.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Release\test_model01.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -8,8 +8,23 @@
          All outputs are up-to-date.
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr:pure /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\test_model01.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.DataVisualization.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt firm.cpp /clr:nostdlib 
          firm.cpp
-     1>firm.cpp(180): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\multiagent projects\test_model01\test_model01\firm.cpp(363): warning C4715: 'firm::get' : not all control paths return a value
+     1>firm.cpp(51): warning C4305: '=' : truncation from 'double' to 'float'
+     1>firm.cpp(67): warning C4305: '=' : truncation from 'double' to 'float'
+     1>firm.cpp(68): warning C4305: '=' : truncation from 'double' to 'float'
+     1>firm.cpp(69): warning C4305: '=' : truncation from 'double' to 'float'
+     1>firm.cpp(83): warning C4305: '=' : truncation from 'double' to 'float'
+     1>firm.cpp(84): warning C4305: '=' : truncation from 'double' to 'float'
+     1>firm.cpp(85): warning C4305: '=' : truncation from 'double' to 'float'
+     1>firm.cpp(191): warning C4018: '<' : signed/unsigned mismatch
+     1>firm.cpp(273): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>firm.cpp(306): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>firm.cpp(309): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>firm.cpp(322): warning C4305: '=' : truncation from 'double' to 'float'
+     1>firm.cpp(325): warning C4305: '=' : truncation from 'double' to 'float'
+     1>firm.cpp(335): warning C4305: '=' : truncation from 'double' to 'float'
+     1>firm.cpp(338): warning C4305: '=' : truncation from 'double' to 'float'
+     1>firm.cpp(384): warning C4244: 'return' : conversion from 'unsigned int' to 'float', possible loss of data
+     1>d:\multiagent projects\test_model01\test_model01\firm.cpp(407): warning C4715: 'firm::get' : not all control paths return a value
          All outputs are up-to-date.
        CoreResGen:
          No resources are out of date with respect to their source files. Skipping resource generation.
@@ -42,4 +57,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:05.29
+Time Elapsed 00:00:06.91

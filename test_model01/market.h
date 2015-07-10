@@ -34,7 +34,7 @@ private:
 	vector<firm*> firm_buyers;
 	vector<household*> household_buyers;
 
-	map<firm*, double> probabilities;
+	map<firm*, float> probabilities;
 
 	
 };

@@ -29,14 +29,14 @@ public:
 	firm(void);
 	firm(string firm_type);
 
-	void init(double _money, double _labor_productivity, double _raw_labor_productivity, double 
-	_capital_productivity, double _amortization, double _raw_productivity, double _salary_coefficient, double _raw_coefficient, double _capital_coefficient, double _aproximation, double _period, double _salary_budget, double _raw_budget, double _capital_budget, double _plan);
+	void init(float _money, float _labor_productivity, float _raw_labor_productivity, float 
+	_capital_productivity, float _amortization, float _raw_productivity, float _salary_coefficient, float _raw_coefficient, float _capital_coefficient, float _aproximation, float _period, float _salary_budget, float _raw_budget, float _capital_budget);
 
 	void activate(string market_type);
 	void decide(string market_type);
 
 	bool check(string market_type);
-	double get_value(string market_type);
+	float get_value(string market_type);
 
 	void fire();
 	void hire(household* worker);
@@ -44,15 +44,15 @@ public:
 
 	void set_vacancies();
 
-	firm* buy(string market_type, map<firm*, double> probabilities);
-	firm* buy(double &factor, double &capacity, double &budget, double &investments, map<firm*, double> probabilities);
+	firm* buy(string market_type, map<firm*, float> probabilities);
+	firm* buy(float &factor, float &capacity, float &budget, float &investments, map<firm*, float> probabilities);
 
-	double pricing();
-	double get_tax(double tax);
+	float pricing();
+	float get_tax(float tax);
 
 	void produce();
 	
-	void sell(double quantity);
+	void sell(float quantity);
 
 	void get_profits();
 
@@ -62,12 +62,12 @@ public:
 
 	string get_type();
 
-	double get(string parameter);
+	float get(string parameter);
 
-	double get_salary();
-	double get_needed_workers();
-	double get_price();
-	double get_storage();
+	float get_salary();
+	float get_needed_workers();
+	float get_price();
+	float get_storage();
 
 
 private:
@@ -75,53 +75,60 @@ private:
 	string type;
 	firm_director *director;
 
-	double money;
-	double salary;
-	double price;
-	double plan;
+	float money;
+	float salary;
+	float price;
+	float plan;
 	
-	double raw_budget;
-	double capital_budget;
-	double salary_budget;
+	float raw_budget;
+	float capital_budget;
+	float salary_budget;
 
-//	double needed_workers;
+//	float needed_workers;
 
-	double labor_capacity;
-	double raw_capacity;
-	double capital_capacity;
+	float labor_capacity;
+	float raw_capacity;
+	float capital_capacity;
 
-	double labor_productivity;
-	double raw_labor_productivity;
-	double raw_productivity;
-	double capital_productivity;
-	double amortization;
+	float labor_productivity;
+	float raw_labor_productivity;
+	float raw_productivity;
+	float capital_productivity;
+	float amortization;
 
-	double elasticity;
+	float elasticity;
 
-	double capital;
-	double raw;
+	float capital;
+	float raw;
 
-	double capital_investments;
-	double raw_investments;
+	float capital_investments;
+	float raw_investments;
 
-	double production;
-	double storage;
+	float production;
+	float storage;
 
-	double aproximation;
-	double period;
-	double time;
-	vector<double> history;
+	float aproximation;
+	float period;
+	float time;
+	vector<float> history;
 
-	double salary_coefficient;
-	double raw_coefficient;
-	double capital_coefficient;
+	float salary_coefficient;
+	float raw_coefficient;
+	float capital_coefficient;
+
+	float plan_coefficient;
 
 	vector<household*> workers;
-	double sold;
+	float sold;
 
-	double sales;
-	double profit;
+	float prev_sold;
+	float prev_plan;
 
-	string parse(double a, double b);	
+	float total_sold;
+
+	float sales;
+	float profit;
+
+	string parse(float a, float b);	
 };
 

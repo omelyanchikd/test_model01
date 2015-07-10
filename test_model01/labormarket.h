@@ -28,7 +28,7 @@ private:
 	vector<firm*> firms;
 	vector<household*> households;
 
-	map<firm*, double> probabilities;
+	map<firm*, float> probabilities;
 
 	string type;
 };

@@ -11,7 +11,7 @@ firm_director::~firm_director(void)
 {
 }
 
-double firm_director::min(double a, double b, double c)
+float firm_director::min(float a, float b, float c)
 {
 	if (a <= b && a <= c)
 		return a;
